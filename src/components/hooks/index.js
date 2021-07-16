@@ -48,18 +48,20 @@ export const useProjects = () => {
     
     const [ projects, setProjects ] = useState([]);
     useEffect(() => {
+        
         firebase.fireStore().collection('projects').where('useId','===','id"e khodam').orderBy('projectId').get()
         .then(snapshot => {
             const allProjects = snapshot.docs.map( project => ({
                 ...project.date(),
                 docId:project.id
             }))
-           if(JSON.stringify(allProjects) !== JSON.stringify(projects)) {
+           
+            if(JSON.stringify(allProjects) !== JSON.stringify(projects)) {       //just avoiding infinite loop
                setProjects(allProjects);        //age bedoone if faghat hamin setProjects ro benivisim , useEffect inifinte loop ejra mishe.
            }
         });
     },[projects]);
 
-    return { projects, setProjects };
+    return { projects, setProjects };             //{ projects : projects, setProjects : setProjects }
 
 }

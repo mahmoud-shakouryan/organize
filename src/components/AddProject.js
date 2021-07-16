@@ -4,9 +4,9 @@ import { useProjectsValue } from "./context/projects-context";
 import { useState } from "react";
 
 const AddProject = ({ shouldShow = false }) => {
-  const [show, setShow] = useState(shouldShow); //show
-  const [projectName, setProjectName] = useState(""); //projectName
-  const { setProjects } = useProjectsValue();
+  const [show, setShow] = useState(shouldShow);         //show
+  const [projectName, setProjectName] = useState("");   //projectName
+  const { setProjects } = useProjectsValue();        
   const projectId = generatePushId();
 
   const addProject = () => {
@@ -20,7 +20,7 @@ const AddProject = ({ shouldShow = false }) => {
           useId: 'az too firebase user"e khodam',
         })
         .then(() => {
-          setProjects([]);
+          setProjects([]);                                    //? chera elzaman bayad inkar ro bokone?
           setProjectName("");
           setShow(false);
         });
@@ -28,7 +28,7 @@ const AddProject = ({ shouldShow = false }) => {
   };
 
   let add_project = null;
-  if (show) {
+  if (show) {                             // show boodane oon kadre add project'e sidebar. yani samte chap oon paeen roosh click "shode"
     add_project = (
       <div className="add-project__input">
         <input

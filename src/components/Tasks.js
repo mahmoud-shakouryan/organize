@@ -7,6 +7,7 @@ import {
   getTitle,
 } from "./helpers/index";
 import collatedTasks from "./constants/index";
+import AddTask from "./AddTask";
 
 
 
@@ -27,16 +28,17 @@ const Tasks = () => {
 
   //////////////inja ye useEffect neveshte bood
   return (
-    <div className="tasks" data-testid="tasks">
-      <h2 data-testid="projectName">{projectName}</h2>
+    <div className="tasks">
+      <h2>{projectName}</h2>
       <ul className="tasks__list">
         {tasks.map((task) => (
-          <li key={`${task.id}`}>
+          <li key={`${task.id}`}>             {/*task.id ro stringesh kard fek konam*/}
             <Checkbox id={task.id} />
             <span>{task.task}</span>
           </li>
         ))}
       </ul>
+      <AddTask/>
     </div>
   );
 };

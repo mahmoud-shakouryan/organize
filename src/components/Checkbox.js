@@ -3,18 +3,18 @@
 
 const Checkbox = ({ id }) => {
      
-    // const archiveTask = () => {
-    //     firebase
-    //     .fireStore()
-    //     .collection('tasks')
-    //     .doc(id)
-    //     .update({
-    //         archived:true
-    //     })
-    // };
+    const archiveTask = () => {
+        firebase
+        .fireStore()
+        .collection('tasks')
+        .doc(id)
+        .update({
+            archived:true
+        })
+    };
 
         return (
-             <div className='checkbox-holder' onClick={ () => {}/*archiveTask()*/} data-testid='checkbox-action'>
+             <div className='checkbox-holder' onClick={ archiveTask} >
                 <span className='checkbox'/>
             </div>
         );

@@ -1,8 +1,8 @@
 //import { FaPizzaSlice } from 'react-icons/fa';
 
-const Header = () => {
+const Header = ({ darkMode, setDarkMode }) => {
     return (
-        <header className='header' data-testid='header'>
+        <header className='header'>
             <nav>
                 <div className='logo'>
                     {/* <img src='./assets/duck.png' alt='schedule'/> */}
@@ -10,8 +10,8 @@ const Header = () => {
                 </div>
                 <div className='settings'>
                     <ul>
-                        <li className='settings__add' data-testid='quick-add-task-action'>+</li>
-                        <li className='settings__darkmode' data-testid='dark-mode-action'>pizzaIcon</li>
+                        <li className='settings__add'>+</li>
+                        <li className='settings__darkmode'>pizzaIcon</li>
                     </ul>
                 </div>
             </nav>
