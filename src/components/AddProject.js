@@ -6,10 +6,10 @@ import { useState } from "react";
 const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);         //show
   const [projectName, setProjectName] = useState("");   //projectName
-  const { setProjects } = useProjectsValue();        
+  const { projects, setProjects } = useProjectsValue();        
   const projectId = generatePushId();
 
-  const addProject = () => {
+  const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
     if (projectName) {
       firebase
         .fireStore()
@@ -20,7 +20,7 @@ const AddProject = ({ shouldShow = false }) => {
           useId: 'az too firebase user"e khodam',
         })
         .then(() => {
-          setProjects([]);                                    //? chera elzaman bayad inkar ro bokone?
+          setProjects([...projects]);                                    //? chera elzaman bayad inkar ro bokone?
           setProjectName("");
           setShow(false);
         });
@@ -45,7 +45,7 @@ const AddProject = ({ shouldShow = false }) => {
         >
           Add Project
         </button>
-        <span className="add-project__cancel" onClick={() => setShow(false)}>
+        <span className="add-project__cancel" onClick={() => setShow(false)} onKeyDown={() => setShow(false)} role='button' tabIndex={0}>
           Cancel
         </span>
       </div>
@@ -56,7 +56,7 @@ const AddProject = ({ shouldShow = false }) => {
     <div className="add-project">
       {add_project}
       <span className="add-project__plus">+</span>
-      <span className="add-project__text" onClick={() => setShow(!show)}>
+      <span className="add-project__text" onClick={() => setShow(!show)} onKeyDown={() => setShow(!show)} role='button' tabIndex={0}>
         Add Project
       </span>
     </div>

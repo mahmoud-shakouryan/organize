@@ -1,16 +1,21 @@
 import Header from './components/layout/Header';
 import Content from './components/layout/Content';
 import { ProjectsProvider, SelectedProjectsProvider } from './components/hooks/index';
+import { useState } from 'react';
 
 
-const App = () => {
+const App = ({ darlModeDefault= false}) => {
+
+   const [darkMode, setDarkMode] = useState([darlModeDefault]) ;
+
+
   return (
     <SelectedProjectsProvider>
     <ProjectsProvider>
-    <div className="App">
-      <Header/>
+    <main className={darkMode ? 'darkmode' : undefined}>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Content/>
-    </div>
+    </main>
     </ProjectsProvider>
     </SelectedProjectsProvider>
   );
