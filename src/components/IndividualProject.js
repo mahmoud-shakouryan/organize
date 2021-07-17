@@ -1,6 +1,6 @@
 import { FaTrashAlt } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue } from "./context/index";
-import { firebase } from "../index"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
+import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
 import { useState } from "react";
 
 const IndividualProject = () => {

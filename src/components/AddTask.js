@@ -15,7 +15,6 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
     
     
     
-    
     const [task, setTask] = useState('');                                           // task
         const [taskDate, setTaskDate] = useState('');                            //taskDate
         const [project, setProject] = useState('');                               //project

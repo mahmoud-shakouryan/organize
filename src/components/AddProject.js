@@ -1,5 +1,5 @@
-import firebase from "../firebase";
-import { generatePushId } from "./helpers/index";
+import {firebase} from "../firebase";
+//import { generatePushId } from "./helpers/index";
 import { useProjectsValue } from "./context/projects-context";
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);         //show
   const [projectName, setProjectName] = useState("");   //projectName
   const { projects, setProjects } = useProjectsValue();        
-  const projectId = generatePushId();
+  //const projectId = generatePushId();
 
   const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
     if (projectName) {

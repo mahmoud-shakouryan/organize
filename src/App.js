@@ -1,6 +1,6 @@
 import Header from './components/layout/Header';
 import Content from './components/layout/Content';
-import { ProjectsProvider, SelectedProjectsProvider } from './components/hooks/index';
+import { projectsProvider, SelectedProjectProvider } from './components/context';
 import { useState } from 'react';
 
 
@@ -10,14 +10,14 @@ const App = ({ darlModeDefault= false}) => {
 
 
   return (
-    <SelectedProjectsProvider>
-    <ProjectsProvider>
+    <SelectedProjectProvider>
+    <projectsProvider>
     <main className={darkMode ? 'darkmode' : undefined}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Content/>
     </main>
-    </ProjectsProvider>
-    </SelectedProjectsProvider>
+    </projectsProvider>
+    </SelectedProjectProvider>
   );
 }
 

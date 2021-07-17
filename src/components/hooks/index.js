@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { firebase } from '../../firebase';
-import collatedTasksExist from '../helpers/index';
+import {collatedTasksExist} from '../helpers/index';
 import moment from 'moment';
 
 

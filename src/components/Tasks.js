@@ -1,5 +1,5 @@
 import Checkbox from "./Checkbox";
-import { useTasks } from "../hooks";
+import { useTasks } from "./hooks/index";
 import { useProjectsValue, useSelectedProjectValue } from "./context/index";
 import {
   collatedTasksExist,

@@ -1,5 +1,5 @@
 // click on checkbox >>> archive that task
-// import { firebase } from '../../firebase'
+ import { firebase } from '../firebase'
 
 const Checkbox = ({ id }) => {
      
