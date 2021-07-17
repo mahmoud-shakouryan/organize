@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import {firebase} from '../../firebase';
+import { firebase } from '../../firebase';
 import collatedTasksExist from '../helpers/index';
-// import moment from 'moment';
+import moment from 'moment';
 
 
 // custom hook #1 
@@ -11,13 +11,25 @@ export const useTasks = selectedProject => {
 
     useEffect(() => {
             let unsubscribe = firebase.fireStore().collection('tasks').where('userId','==','felanId'); //fireStore()>>>firestore ro mide(database) collection()>>>collection ro mide.
-            unsubscribe = selectedProject && !collatedTasksExist(selectedProject)
-            ? (unsubscribe = unsubscribe.where('projectId','==',selectedProject))
-            : selectedProject === 'TODAY'
-            ? (unsubscribe = unsubscribe.where('date', '==', moment().format('DD/MM/YYYY')))
-            : selectedProject === 'INBOX' || selectedProject === 0 
-            ? (unsubscribe = unsubscribe.where('date', '==', ''))
-            : unsubscribe ; 
+            
+            if(selectedProject && !collatedTasksExist(selectedProject)){
+                unsubscribe = unsubscribe.where('projectId','==',selectedProject);
+            }
+            else if(selectedProject === 'TODAY'){
+                unsubscribe = unsubscribe.where('date', '==', moment().format('DD/MM/YYYY'));
+            }
+            else if (selectedProject === 'INBOX' || selectedProject === 0){
+                unsubscribe = unsubscribe.where('date', '==', '');
+            }
+            
+            
+            // unsubscribe = selectedProject && !collatedTasksExist(selectedProject)
+            // ? (unsubscribe = unsubscribe.where('projectId','==',selectedProject))
+            // : selectedProject === 'TODAY'
+            // ? (unsubscribe = unsubscribe.where('date', '==', moment().format('DD/MM/YYYY')))
+            // : selectedProject === 'INBOX' || selectedProject === 0 
+            // ? (unsubscribe = unsubscribe.where('date', '==', ''))
+            // : unsubscribe ; 
             
             unsubscribe = unsubscribe.onSnapshot(snapshot => {
                 const newTasks = snapshot.docs.map(task => {
