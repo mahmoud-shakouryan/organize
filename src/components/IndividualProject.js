@@ -9,21 +9,21 @@ const IndividualProject = () => {
   const { setSelectedProject } = useSelectedProjectValue();
 
   const deleteProject = (docId) => {
-    firebase;
-    fireStore()
+    firebase
+    .fireStore()
       .collection("projects")
       .doc(docId)
       .delete()
       .then(() => {
         setProjects([...projects]); //inja tozih dad ke age tebghe hamin khat , tooye custom hook oon if ro tooye useEffect nazashte boodim bad az hamin khate inja ham dochare infinite loop mishod.
-        setSelectedProjects("INBOX");
+        setSelectedProject("INBOX");
       });
   };
 
   return (
     <>
       <span className="sidebar__dot">noghte</span>
-      <span className="sidebar__project-name">{project.name}</span>
+      <span className="sidebar__project-name">{projects.name}</span>
       <span
         className="sidebar__project-delete"
         onClick={() => setShowConfirm(!showConfirm)}
@@ -36,7 +36,7 @@ const IndividualProject = () => {
               <p>Are you sure yiu want ro delete this project?</p>
               <button
                 type="button"
-                onClick={() => deleteProject(project.docId)}
+                onClick={() => deleteProject(projects.docId)}
               >
                 Delete
               </button>

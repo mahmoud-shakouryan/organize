@@ -7,7 +7,7 @@ const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);         //show
   const [projectName, setProjectName] = useState("");   //projectName
   const { projects, setProjects } = useProjectsValue();        
-  //const projectId = generatePushId();
+  const projectId = Math.floor(Math.random() * 100);
 
   const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
     if (projectName) {

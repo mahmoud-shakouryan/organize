@@ -10,7 +10,7 @@ export const useTasks = selectedProject => {
     const [archivedTasks, setArchivedTasks] = useState([]);
 
     useEffect(() => {
-            let unsubscribe = firebase.fireStore().collection('tasks').where('userId','==','felanId'); //fireStore()>>>firestore ro mide(database) collection()>>>collection ro mide.
+            let unsubscribe = firebase.firestore().collection('tasks').where('userId','==','felanId'); //fireStore()>>>firestore ro mide(database) collection()>>>collection ro mide.
             
             if(selectedProject && !collatedTasksExist(selectedProject)){
                 unsubscribe = unsubscribe.where('projectId','==',selectedProject);
@@ -61,7 +61,7 @@ export const useProjects = () => {
     const [ projects, setProjects ] = useState([]);
     useEffect(() => {
         
-        firebase.fireStore().collection('projects').where('useId','===','id"e khodam').orderBy('projectId').get()
+        firebase.firestore().collection('projects').where('useId','===','id"e khodam').orderBy('projectId').get()
         .then(snapshot => {
             const allProjects = snapshot.docs.map( project => ({
                 ...project.date(),
