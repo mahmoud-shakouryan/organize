@@ -144,7 +144,6 @@ ul {
     margin: auto;
     height: 44px;
 
-    p,
     li {
       color: white;
     }
@@ -158,18 +157,16 @@ ul {
         text-align: right;
 
         ul {
-          float: right;
-
+          //float: right;
           li {
-            @include va;
+            @include va();
+            justify-content: center;
             list-style-type: none;
             cursor: pointer;
             width: 30px;
             height: 30px;
-            text-align: center;
-            vertical-align: middle;
             float: left;
-
+            background-color: rgb(180, 51, 51);
             &:hover {
               border-radius: 3px;
               background-color: rgba(255, 255, 255, 0.2);
@@ -180,15 +177,16 @@ ul {
               font-size: 30px;
 
               button{
-                @include transparent-button();
+                @include transparent-button;
                 color: white;
                 cursor: pointer;
+                font-size: 20px;
               }
             }
 
             &.settings__darkmode {
               button{
-                @include transparent-button();
+                @include transparent-button;
                 color: white;
                 cursor: pointer;
                 display: flex;
@@ -208,15 +206,16 @@ ul {
 
 ///////// Sidebar style /////////////////////////////////////////////////////////////////////////////////////////////
 .sidebar {
-  @include no-select();
+  @include no-select;
+  background-color: rgb(32, 173, 63);
   width: 266px;
-  height: calc(100vh);
-  padding-top: 74px;
+  height: 100vh;
+  padding-top: 75px;
   position: fixed;
+  left: 0;
   overflow-x: hidden; //too film >> overlay-x ?
   overflow-y: hidden;
   border-right: $generic-border;
-  background-color: #fafafa;
 
   @include mq("900px") {
     display: none;
@@ -225,8 +224,8 @@ ul {
   li {
     padding-left: 10px;
     padding-right: 15px;
-
-    &:hover .sidebar__project-delete {
+    background-color: rgb(7, 124, 13);
+    &:hover .sidebar__project-delete {            //?????????? kojas in?
       display: flex;
     }
   }
@@ -234,7 +233,7 @@ ul {
   &__project {
     padding: 5px 0;
     cursor: pointer;
-
+    background-color: rgb(161, 216, 12);
     div:nth-child(1){
       width: 100%;
       display: flex;

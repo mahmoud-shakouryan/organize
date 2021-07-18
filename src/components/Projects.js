@@ -9,7 +9,7 @@ const Projects = ({ activeValue = null }) => {
 
   return (
     projects &&
-    projects.map((project) => (
+    projects.map(project => (
       <li
         key={project.projectId}
         data-doc-id={project.docId}
@@ -20,12 +20,6 @@ const Projects = ({ activeValue = null }) => {
         }
       >
         <div
-        role='button'
-        tabIndex={0}
-          onKeyDown={() => {
-            setActive(project.projectId);
-            setSelectedProject(project.projectId);
-          }}
           onClick={() => {
             setActive(project.projectId);
             setSelectedProject(project.projectId);
