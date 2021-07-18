@@ -4,18 +4,20 @@ import { ProjectsProvider, SelectedProjectProvider } from './components/context'
 import { useState } from 'react';
 
 
-const App = ({ darlModeDefault= false}) => {
+const App = () => {
 
-   const [darkMode, setDarkMode] = useState([darlModeDefault]) ;
+   const [darkMode, setDarkMode] = useState(false) ;
 
 
   return (
     <SelectedProjectProvider>
     <ProjectsProvider>
+    
     <main className={darkMode ? 'darkmode' : undefined}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Content/>
     </main>
+    
     </ProjectsProvider>
     </SelectedProjectProvider>
   );

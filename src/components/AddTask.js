@@ -66,8 +66,8 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
                        
                         { showAddTaskMain && (
                             <div className='add-task__shallow' onClick={ () => setShowMain(!showMain)}>
-                                <span class='add-task__plus'>+</span>
-                                <span class='add-task__text'>Add Task</span>
+                                <span className='add-task__plus'>+</span>
+                                <span className='add-task__text'>Add Task</span>
                             </div>
                         )}
                         
