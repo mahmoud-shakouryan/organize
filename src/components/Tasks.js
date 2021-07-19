@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import Checkbox from "./Checkbox";
 import { useTasks } from "./hooks/index";
 import { useProjectsValue, useSelectedProjectValue } from "./context/index";
@@ -13,20 +14,26 @@ import AddTask from "./AddTask";
 
 
 const Tasks = () => {
-  const { selectedProject } = useSelectedProjectValue();            //context.
-  const { projects } = useProjectsValue();                        //context + hook
-  const { tasks } = useTasks(selectedProject);      //custom hook #1 // selectedProject ro az custom hook gereftim
+  
+  const { selectedProject } = useSelectedProjectValue();            //context 1.
+  const { projects } = useProjectsValue();                        //context 2 (oon too be hooke 2 useProjects vasl mishe)
+  const { tasks } = useTasks(selectedProject);      //custom hook #1 // selectedProject ro az context 1 gereftim
 
+
+  console.log('Tasks >>> projects : ',projects);
+  console.log('Tasks >>> tasks : ',tasks);
   let projectName = "";
-  if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
+  if (projects && selectedProject && projects.length > 0 && !collatedTasksExist(selectedProject)) {
     projectName = getTitle(projects, selectedProject).name;
   }
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
   }
 
-
-  //////////////inja ye useEffect neveshte bood
+  useEffect(() => {
+    document.title = `${projectName} : Organize`;
+  }, [projectName])
+  
   return (
     <div className="tasks">
       <h2>{projectName}</h2>

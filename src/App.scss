@@ -500,6 +500,7 @@ ul {
       float: right;
       color: gray;
       margin: 20px 10px;
+      background-color: rgb(1, 5, 5);
   }
   &__project{
       margin-right: 0;
@@ -547,7 +548,7 @@ ul {
 ///////////// Task Date////////////////////////
  .task-date{
      @include box-overlay();
-     background-color: #fff;
+     background-color: rgb(196, 180, 40);
      width: 200px;
     right: 0;
 

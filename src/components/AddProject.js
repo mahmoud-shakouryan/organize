@@ -7,17 +7,17 @@ const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);         //show
   const [projectName, setProjectName] = useState("");   //projectName
   const { projects, setProjects } = useProjectsValue();        
-  const projectId = Math.floor(Math.random() * 100);
+  const projectId = Math.random() * 100;
 
   const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
     if (projectName) {
       firebase
-        .fireStore()
+        .firestore()
         .collection("projects") //return nemikhad?
         .add({
           projectId,
           name: projectName,
-          useId: 'az too firebase user"e khodam',
+          useId: '1234567890',
         })
         .then(() => {
           setProjects([...projects]);                                    //? chera elzaman bayad inkar ro bokone?

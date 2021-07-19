@@ -28,7 +28,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
         const addTask = () => {
             const projectId = project || selectedProject;
             let collatedDate = '';
-            if(projectId === 'TODAY'){  //serfan hesab kardane tarikh too in ghesmat      // too site oon bala smate chap 3ta gozine hast inbox today next 7
+            if(projectId === 'TODAY'){  //serfan hesab kardane tarikh too in ghesmat      // too site oon bala smate chap 3ta gozine hast inbox today next_7
                 collatedDate = moment().format('DD/MM/YYYY');
             }
             else if(projectId === 'NEXT_7'){
@@ -36,7 +36,8 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
             }
 
             if(task && projectId){
-                return firebase
+                return ( 
+                firebase
                 .firestore()
                 .collection('tasks')
                 .add({
@@ -45,7 +46,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
                     task:task,
                     date:collatedDate || taskDate,
                     userId:'felan'
-                })
+                }))
                 .then(()=>{            // then reset everything
                     setTask('');
                     setProject('');
@@ -123,7 +124,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
                                     <FaRegListAlt/>
                                 </span> 
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
-                                className='add-task__project'
+                                className='add-task__date'
                                 onClick={ () => setShowTaskDate(!showTaskDate)}
                                    >
                                     <FaRegCalendarAlt/>

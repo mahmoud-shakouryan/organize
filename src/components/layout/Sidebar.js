@@ -8,7 +8,7 @@ import AddProject from "../AddProject";
 
 const Sidebar = () => {
 
-  const [active, setActive] = useState("inbox");
+  const [active, setActive] = useState("inbox");               //chon selectedProject initial'esh 'INBOX' e, app load ke mishe to sidebae inbox active shode.
   const [showProjects, setShowProjects] = useState(true);
   const { setSelectedProject } = useSelectedProjectValue();
 
@@ -39,7 +39,7 @@ const Sidebar = () => {
           className={active === "next_7" ? "active" : undefined}
           onClick={() => {
             setActive("next_7");
-            setSelectedProject("TODAY");
+            setSelectedProject("NEXT_7");
           }}
         >
           <span><FaRegCalendarAlt/></span>

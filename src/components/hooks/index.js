@@ -11,7 +11,6 @@ export const useTasks = selectedProject => {              //SHARE THE DATE, NOT 
 
     useEffect(() => {
             let unsubscribe = firebase.firestore().collection('tasks').where('userId','==','1234567890'); //fireStore()>>>firestore ro mide(database) collection()>>>collection ro mide.
-            
             if(selectedProject && !collatedTasksExist(selectedProject)){
                 unsubscribe = unsubscribe.where('projectId','==',selectedProject);
             }
@@ -46,7 +45,7 @@ export const useTasks = selectedProject => {              //SHARE THE DATE, NOT 
                 setArchivedTasks(newTasks.filter(task=>task.archived === true));
             });
 
-            //return () => unsubscribe();
+            return () => unsubscribe();          
         },[ selectedProject ]);
 
         return {tasks, archivedTasks};
@@ -57,18 +56,16 @@ export const useTasks = selectedProject => {              //SHARE THE DATE, NOT 
 
 // custom hook #2
 export const useProjects = () => {
-    
     const [ projects, setProjects ] = useState([]);
-    useEffect(() => {
-        
-        firebase.firestore().collection('projects').where('userId','==','1234567890').orderBy('projectId').get()
+   useEffect(() => {
+       const dbAccess =  firebase.firestore().collection('projects').get();
+       dbAccess
         .then(result => {
-            console.log('hooks>> useProjects >>> result: ',result);
             const allProjects = result.docs.map( project => ({
-                ...project.date(),
+                ...project.data(),
                 docId:project.id
             }))
-           
+           console.log('allProjects',allProjects)
             if(JSON.stringify(allProjects) !== JSON.stringify(projects)) {       //just avoiding infinite loop
                setProjects(allProjects);        //age bedoone if faghat hamin setProjects ro benivisim , useEffect inifinte loop ejra mishe.
            }

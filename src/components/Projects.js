@@ -3,10 +3,10 @@ import { useSelectedProjectValue, useProjectsValue } from "./context/index";
 import IndividualProject from "./IndividualProject";
 
 const Projects = ({ activeValue = null }) => {
-  const [active, setActive] = useState(activeValue); //active
-  const { setSelectedProject } = useSelectedProjectValue(); //?????? chera object destructuring?
-  const { projects } = useProjectsValue(); //?????? chera object destructuring?
-
+  const [active, setActive] = useState(activeValue);                      //active
+  const { setSelectedProject } = useSelectedProjectValue();                 //?????? chera object destructuring?
+  const { projects } = useProjectsValue();                            //?????? chera object destructuring?
+ 
   return (
     projects &&
     projects.map(project => (

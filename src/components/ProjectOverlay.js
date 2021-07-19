@@ -12,7 +12,7 @@ const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectOverlay 
                 <ul className='project-overlay__list'> 
                 {projects.map(project => (
                     <li
-                    key={project.projectId}
+                    key={Math.random()}
                     onClick={()=>{
                         setProject(project.projectId);
                         setShowProjectOverlay(false);
