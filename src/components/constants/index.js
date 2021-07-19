@@ -5,5 +5,5 @@ const collatedTasks = [
 ];
 
 
-export default collatedTasks;
+export default collatedTasks;           //exporte ye araye.
  

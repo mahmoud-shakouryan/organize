@@ -25,7 +25,7 @@ const Projects = ({ activeValue = null }) => {
             setSelectedProject(project.projectId);
           }}
         >
-          <IndividualProject project={project} />
+          <IndividualProject className='individualProjectComp' project={project} />
         </div>
       </li>
     ))

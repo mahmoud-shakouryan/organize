@@ -4,7 +4,7 @@ import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim an
 import { useState } from "react";
 
 const IndividualProject = () => {
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);             
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
 
@@ -28,12 +28,11 @@ const IndividualProject = () => {
         className="sidebar__project-delete"
         onClick={() => setShowConfirm(!showConfirm)}
       >
-        hello delete me!
         <FaTrashAlt />
         {showConfirm && (
           <div className="project-delete-modal">
             <div className="project-delete-modal__inner">
-              <p>Are you sure yiu want ro delete this project?</p>
+              <p>Are you sure you want to delete this project?</p>
               <button
                 type="button"
                 onClick={() => deleteProject(projects.docId)}

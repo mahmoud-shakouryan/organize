@@ -7,9 +7,10 @@ import AddProject from "../AddProject";
 
 
 const Sidebar = () => {
-  const { setSelectedProject } = useSelectedProjectValue();
+
   const [active, setActive] = useState("inbox");
   const [showProjects, setShowProjects] = useState(true);
+  const { setSelectedProject } = useSelectedProjectValue();
 
   return (
     <div className="sidebar">
@@ -46,7 +47,7 @@ const Sidebar = () => {
         </li>
       </ul>
 
-      <div className="sideabr__middle" onClick={ () => setShowProjects(!showProjects)}>
+      <div className="sidebar__middle" onClick={ () => setShowProjects(!showProjects)}>
         <span><FaChevronDown className={!showProjects ? 'hidden-projects' : undefined} /></span>
         <h2>Projects</h2>
       </div>

@@ -13,9 +13,9 @@ import AddTask from "./AddTask";
 
 
 const Tasks = () => {
-  const { selectedProject } = useSelectedProjectValue(); //vasl shodan be context >> value hash >> local state.
-  const { projects } = useProjectsValue(); //vasl shodan be context >> value hash >> custom hook.
-  const { tasks } = useTasks(selectedProject); //custom hook #1
+  const { selectedProject } = useSelectedProjectValue();            //context.
+  const { projects } = useProjectsValue();                        //context + hook
+  const { tasks } = useTasks(selectedProject);      //custom hook #1 // selectedProject ro az custom hook gereftim
 
   let projectName = "";
   if (projects && selectedProject && !collatedTasksExist(selectedProject)) {

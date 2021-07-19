@@ -37,7 +37,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
 
             if(task && projectId){
                 return firebase
-                .fireStore()
+                .firestore()
                 .collection('tasks')
                 .add({
                     archived:false,

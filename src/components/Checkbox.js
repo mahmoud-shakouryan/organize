@@ -5,7 +5,7 @@ const Checkbox = ({ id }) => {
      
     const archiveTask = () => {
         firebase
-        .fireStore()
+        .firestore()
         .collection('tasks')
         .doc(id)
         .update({
