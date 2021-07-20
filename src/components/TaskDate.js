@@ -5,7 +5,7 @@ import moment from 'moment';
 const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => {
     return (
                 showTaskDate && (
-                    <div className='task-date' >
+                    <div className='taskDateDiv' >
                         <ul className='task-date__list'>
                             <li 
                             onClick={()=>{

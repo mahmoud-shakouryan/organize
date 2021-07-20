@@ -121,14 +121,14 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
                                 className='add-task__project'
                                 onClick={ () => setShowProjectOverlay(!showProjectOverlay)}
                                    >
-                                    <FaRegListAlt/>
-                                </span> 
+                                    <FaRegListAlt className='icon'/>
+                                </span>
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
                                 className='add-task__date'
                                 onClick={ () => setShowTaskDate(!showTaskDate)}
                                    >
-                                    <FaRegCalendarAlt/>
-                                </span> 
+                                    <FaRegCalendarAlt className='icon'/>
+                                </span>  
                             </div>
                         )}
                     </div>
