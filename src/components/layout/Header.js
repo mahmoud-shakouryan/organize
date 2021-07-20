@@ -18,17 +18,15 @@ const Header = ({ darkMode, setDarkMode }) => {
                     <ul>
                         <li 
                         className='settings__add'
-                        >
-                          <button type='button'
-                          onClick={ () => {
+                        onClick={ () => {
                             setShowQuickAddTask(true);
                             setShouldShowMain(true);
-                         }} 
-                          >
+                          }}
+                          title='Add Quick Task'
+                        >
                             +
-                            </button> 
                         </li>
-                        <li className='settings__darkmode'><button type='button'  onClick={()=>setDarkMode(!darkMode)} >{darkMode ? <FaMoon/>:<FaSun/>}</button></li>
+                        <li className='settings__darkmode' onClick={()=>setDarkMode(!darkMode)} title='Darkmode'>{darkMode ? <FaMoon/>:<FaSun/>}</li>
                     </ul>
                 </div>
             </nav>
