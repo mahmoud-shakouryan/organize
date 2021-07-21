@@ -14,7 +14,7 @@ export const useTasks = selectedProject => {              //SHARE THE DATE, NOT 
       let unsubscribe = firebase
         .firestore()
         .collection('tasks')
-        .where('userId', '==', 'jlIFXIwyAL3tzHMtzRbw');
+        .where('userId', '==', '1234567890');
   
       unsubscribe =
         selectedProject && !collatedTasksExist(selectedProject)
@@ -53,28 +53,33 @@ export const useTasks = selectedProject => {              //SHARE THE DATE, NOT 
     return { tasks, archivedTasks };
    
     };
-// const selectedProject = 1; 
-// const { tasks , archivedTasks } = useTasks(selectedProject);
-
 
 // custom hook #2
 export const useProjects = () => {
-    console.log('hook#2')
-    const [ projects, setProjects ] = useState([]);
-   useEffect(() => {
-       const dbAccess =  firebase.firestore().collection('projects').get();
-       dbAccess
-        .then(result => {
-            const allProjects = result.docs.map( project => ({
-                ...project.data(),
-                docId:project.id
-            }));
-         if(JSON.stringify(allProjects) !== JSON.stringify(projects)) {       //just avoiding infinite loop
-            setProjects(allProjects);        //age bedoone if faghat hamin setProjects ro benivisim , useEffect inifinte loop ejra mishe.
-           }
-        });
-    },[projects]);
+    const [projects, setProjects] = useState([]);
+    console.log('hook#2',projects)
+    useEffect(() => {
+    const db = firebase.firestore().collection('projects').where('userId','==','1234567890').orderBy('projectId').get();
+    db.then(result => {
+        const allProjects = result.docs.map( project => ({
+            docId:project.id,
+            ...project.data()
+        }));
 
-    return { projects, setProjects };             //{ projects : projects, setProjects : setProjects }
+        if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
+            setProjects(allProjects);
+          }
+    console.log('hook#2(useEffect)',projects)
+
+    })
+    .catch(err=>{
+        console.log('useProjects error',err);
+    });
+  },[]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return { projects, setProjects };
 
 }
+
+
+

@@ -2,16 +2,16 @@ import { useState } from "react";
 import { useSelectedProjectValue, useProjectsValue } from "./context/index";
 import IndividualProject from "./IndividualProject";
 
-const Projects = () => {
-  console.log('Projects');
+const Projects =() => {
+  console.log("Projects");
 
-  const [active, setActive] = useState(null);                      //active
-  const { setSelectedProject } = useSelectedProjectValue();         // faghat context  
-  const { projects } = useProjectsValue();                  //be context be hook          
- 
+  const [active, setActive] = useState(null); //active
+  const { setSelectedProject } = useSelectedProjectValue(); // faghat context
+  const { projects } = useProjectsValue(); //be context be hook#2
+
   return (
     projects &&
-    projects.map(project => (
+    projects.map((project) => (
       <li
         key={Math.random()}
         className={
@@ -26,7 +26,10 @@ const Projects = () => {
             setSelectedProject(project.projectId);
           }}
         >
-          <IndividualProject className='individualProjectComp' project={project} />
+          <IndividualProject
+            className="individualProjectComp"
+            project={project}
+          />
         </div>
       </li>
     ))
