@@ -7,6 +7,7 @@ import AddProject from "../AddProject";
 
 
 const Sidebar = () => {
+  console.log('Sidebar');
 
   const [active, setActive] = useState("inbox");               //chon selectedProject initial'esh 'INBOX' e, app load ke mishe to sidebae inbox active shode.
   const [showProjects, setShowProjects] = useState(true);
@@ -22,8 +23,8 @@ const Sidebar = () => {
             setSelectedProject("INBOX");
           }}
         >
-          <span><FaInbox/></span>
-          <span>inbox</span>
+          <span className='iconSpan'><FaInbox/></span>
+          <span className='iconNameSpan'>inbox</span>
         </li>
         <li
           className={active === "today" ? "active" : undefined}
@@ -32,8 +33,8 @@ const Sidebar = () => {
             setSelectedProject("TODAY");
           }}
         >
-          <span><FaRegCalendar/></span>
-          <span>today</span>
+          <span className='iconSpan'><FaRegCalendar/></span>
+          <span className='iconNameSpan'>today</span>
         </li>
         <li
           className={active === "next_7" ? "active" : undefined}
@@ -42,8 +43,8 @@ const Sidebar = () => {
             setSelectedProject("NEXT_7");
           }}
         >
-          <span><FaRegCalendarAlt/></span>
-          <span>next 7 days</span>
+          <span className='iconSpan'><FaRegCalendarAlt/></span>
+          <span className='iconNameSpan'>next 7 days</span>
         </li>
       </ul>
 

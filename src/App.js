@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 
 const App = () => {
-
+  console.log('App');
    const [darkMode, setDarkMode] = useState(false) ;
 
 

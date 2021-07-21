@@ -12,6 +12,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
     //showQuickAddTask >> too site oon bala ye gozine dare baraye neveshtane sari. ke age showQuickAddTask true bashe yani oon click shode.
 
         
+  console.log('AddTask');
     
     
     

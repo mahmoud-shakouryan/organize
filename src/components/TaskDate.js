@@ -3,6 +3,8 @@ import moment from 'moment';
 
 
 const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => {
+  console.log('TaskDate');
+
     return (
                 showTaskDate && (
                     <div className='taskDateDiv' >

@@ -3,6 +3,7 @@ import { useState } from "react";
 import AddTask from '../AddTask';   
 
 const Header = ({ darkMode, setDarkMode }) => {
+  console.log('Header');
 
         const [shouldShowMain, setShouldShowMain] = useState(false);
         const [showQuickAddTask, setShowQuickAddTask] = useState(false);

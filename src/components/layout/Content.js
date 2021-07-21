@@ -3,6 +3,7 @@ import Tasks from '../Tasks';
 
 
 const Content = () => {
+    console.log('Content')
     return (
         <section className='content'>
             <Sidebar/>

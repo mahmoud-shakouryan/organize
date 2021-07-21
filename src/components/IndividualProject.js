@@ -3,7 +3,9 @@ import { useProjectsValue, useSelectedProjectValue } from "./context/index";
 import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
 import { useState } from "react";
 
-const IndividualProject = () => {
+const IndividualProject = ({project}) => {
+  console.log('IndividualProject');
+
   const [showConfirm, setShowConfirm] = useState(false);             
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
@@ -22,8 +24,8 @@ const IndividualProject = () => {
 
   return (
     <>
-      <span className="sidebar__dot">noghte</span>
-      <span className="sidebar__project-name">{projects.name}</span>
+      <span className="sidebar__dot">&middot;</span>
+      <span className="sidebar__project-name">{project.name}</span>
       <span
         className="sidebar__project-delete"
         onClick={() => setShowConfirm(!showConfirm)}

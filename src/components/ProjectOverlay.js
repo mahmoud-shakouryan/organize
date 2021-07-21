@@ -4,6 +4,7 @@ import { useProjectsValue } from "./context";
 
 
 const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectOverlay }) => {
+  console.log('ProjectOverlay');
 
     const { projects } = useProjectsValue();
     return (

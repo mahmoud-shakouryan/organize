@@ -2,17 +2,18 @@ import { useState } from "react";
 import { useSelectedProjectValue, useProjectsValue } from "./context/index";
 import IndividualProject from "./IndividualProject";
 
-const Projects = ({ activeValue = null }) => {
-  const [active, setActive] = useState(activeValue);                      //active
-  const { setSelectedProject } = useSelectedProjectValue();                 //?????? chera object destructuring?
-  const { projects } = useProjectsValue();                            //?????? chera object destructuring?
+const Projects = () => {
+  console.log('Projects');
+
+  const [active, setActive] = useState(null);                      //active
+  const { setSelectedProject } = useSelectedProjectValue();         // faghat context  
+  const { projects } = useProjectsValue();                  //be context be hook          
  
   return (
     projects &&
     projects.map(project => (
       <li
-        key={project.projectId}
-        data-doc-id={project.docId}
+        key={Math.random()}
         className={
           active === project.projectId
             ? "sidebar__project active"

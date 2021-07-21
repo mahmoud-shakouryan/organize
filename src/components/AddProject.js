@@ -3,27 +3,31 @@ import {firebase} from "../firebase";
 import { useProjectsValue } from "./context/projects-context";
 import { useState } from "react";
 
-const AddProject = ({ shouldShow = false }) => {
-  const [show, setShow] = useState(shouldShow);         //show
+const AddProject = () => {
+  const [show, setShow] = useState(false);         //show
   const [projectName, setProjectName] = useState("");   //projectName
   const { projects, setProjects } = useProjectsValue();        
   const projectId = Math.random() * 100;
 
   const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
+    console.log('AddProject')
     if (projectName) {
-      firebase
+     return firebase
         .firestore()
         .collection("projects") //return nemikhad?
         .add({
-          projectId,
+          projectId : projectId,
           name: projectName,
           useId: '1234567890',
         })
         .then(() => {
-          setProjects([...projects]);                                    //? chera elzaman bayad inkar ro bokone?
+           setProjects([...projects]);                                    //? chera elzaman bayad inkar ro bokone?
           setProjectName("");
           setShow(false);
-        });
+        })
+        .catch(err=>{
+          console.log('AddProject >>> addProject Error',err);
+        })
     }
   };
 
@@ -45,7 +49,7 @@ const AddProject = ({ shouldShow = false }) => {
         >
           Add Project
         </button>
-        <span className="add-project__cancel" onClick={() => setShow(false)} onKeyDown={() => setShow(false)} role='button' tabIndex={0}>
+        <span className="add-project__cancel" onClick={() => setShow(false)}>
           Cancel
         </span>
       </div>
@@ -56,7 +60,7 @@ const AddProject = ({ shouldShow = false }) => {
     <div className="add-project">
       {add_project}
       <span className="add-project__plus">+</span>
-      <span className="add-project__text" onClick={() => setShow(!show)} onKeyDown={() => setShow(!show)} role='button' tabIndex={0}>
+      <span className="add-project__text" onClick={() => setShow(!show)}>
         Add Project
       </span>
     </div>
