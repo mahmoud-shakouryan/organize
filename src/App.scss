@@ -207,38 +207,47 @@ body {
     }
 
     .sidebar__middle{
+      padding: 2px 10px;
+      div{
+        border-radius: 3px;
+        padding: 5px 0px;
       @include vc;
-      padding: 10px 10px;
       cursor: pointer;
       span{
-        //background-color: rgb(97, 33, 33);
         @include vc;
+        justify-content: flex-start;
         margin-right: 10px;
-        >*{
+        .hiddenProjects{
+          font-size: 14px;
+          font-weight: bold;
+        }
+        > * {
        transition: all 0.3s ease;
         }
+        
       }
       h2{
        // background-color: rgb(68, 91, 95);
         font-size: 14px;
         font-weight: 500;
       }
-      .hidden-projects{
+      .arrowAnimate{
         transform: rotate(-90deg);
       }
     }
+    }
 
 
-    .sidebar__projects{
+    .sidebar__projects{  //tu sidebar
       list-style: none;
       padding: 0px 10px;
-
-      .sidebar__project{
+      .sidebar__project{   //li tu Projects
         margin-bottom: 2px;
-        padding-left: 15px;
-        .singleProject{
-
-           padding: 2px 2px;
+        // padding-left: 15px;
+        .singleProject{    //tu IndividualProject
+           padding: 4px 2px;
+        border-radius:3px;
+          
           @include vc();
           justify-content: space-between;
           cursor: pointer;
@@ -246,26 +255,29 @@ body {
               padding-left: 1px;
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: $dark;
             .sidebar__dot{
               margin-right: 5px;
               font-size: 8px;
              @include vc();
 
              .icon{
-              color: $pink;
+              color: $dark;
              }
            }
           }
 
           .sidebar__project-delete{
-
             display: flex;
             align-items: center;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
+             color: $dark;
             &:hover{
              color: red;
+             
             }
            
             .project-delete-modal{
@@ -291,9 +303,10 @@ body {
           }
 
           &:hover{
-            background-color: $gray_2;
+            background-color: $gray_1;
             
           }
+          
           
         }
        
@@ -302,24 +315,23 @@ body {
          background-color: $gray_2;
 
        }
+       
       }
     }
 
 
     .add-project{
       padding: 5px 10px;
-      font-size: 14px;
-      font-weight: 500;
       @include vc;
       justify-content: flex-start;
       cursor: pointer;
       .add-project__plus{
         margin-right: 10px;
-        font-size: 14px;
+        font-size: 24px;
         font-weight: 500;
       }
       .add-project__text{
-        font-size: 11px;
+        font-size: 14px;
       }
     }
     

@@ -9,7 +9,7 @@ import AddProject from "../AddProject";
 const Sidebar = () => {
 
   const [active, setActive] = useState("inbox");               //chon selectedProject initial'esh 'INBOX' e, app load ke mishe to sidebae inbox active shode.
-  const [showProjects, setShowProjects] = useState(true);
+  const [showProjects, setShowProjects] = useState(false);
   const { setSelectedProject } = useSelectedProjectValue();
 
   return (
@@ -48,8 +48,11 @@ const Sidebar = () => {
       </ul>
 
       <div className="sidebar__middle" onClick={ () => setShowProjects(!showProjects)}>  
-        <span><FaChevronDown className={!showProjects ? 'hidden-projects' : undefined} /></span>
+        <div>
+        <span><FaChevronDown className={!showProjects ? 'hiddenProjects arrowAnimate':'hiddenProjects '} /></span>
         <h2>Projects</h2>
+        </div>
+
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       {showProjects && <AddProject />}
