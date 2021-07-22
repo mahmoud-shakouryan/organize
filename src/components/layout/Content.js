@@ -3,7 +3,6 @@ import Sidebar from './Sidebar';
 
 
 const Content = () => {
-    console.log('Content')
     return (
         <section className='content'>
             <Sidebar/>

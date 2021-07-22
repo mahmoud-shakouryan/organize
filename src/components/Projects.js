@@ -3,12 +3,9 @@ import { useSelectedProjectValue, useProjectsValue } from "./context/index";
 import IndividualProject from "./IndividualProject";
 
 const Projects =() => {
-  console.log("Projects");
-
   const [active, setActive] = useState(null); //active
   const { setSelectedProject } = useSelectedProjectValue(); // faghat context
   const { projects } = useProjectsValue(); //be context be hook#2
-
   return (
     projects &&
     projects.map((project) => (
@@ -19,18 +16,14 @@ const Projects =() => {
             ? "sidebar__project active"
             : "sidebar__project"
         }
+        onClick={() => {
+          setActive(project.projectId);
+          setSelectedProject(project.projectId);
+        }}
       >
-        <div
-          onClick={() => {
-            setActive(project.projectId);
-            setSelectedProject(project.projectId);
-          }}
-        >
           <IndividualProject
-            className="individualProjectComp"
             project={project}
           />
-        </div>
       </li>
     ))
   );

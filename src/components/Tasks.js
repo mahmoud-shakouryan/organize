@@ -14,7 +14,6 @@ import AddTask from "./AddTask";
 
 
 const Tasks = () => {
-  console.log('Tasks');
   
   const { selectedProject } = useSelectedProjectValue();            //context 1.
   const { projects } = useProjectsValue();                        //context 2 (oon too be hooke 2 useProjects vasl mishe)

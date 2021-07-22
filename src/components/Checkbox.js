@@ -2,7 +2,6 @@
  import { firebase } from '../firebase'
 
 const Checkbox = ({ id }) => {
-  console.log('Checkbox');
      
     const archiveTask = () => {
         firebase

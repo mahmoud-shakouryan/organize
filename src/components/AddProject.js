@@ -10,18 +10,14 @@ const AddProject = () => {
   const projectId = Math.random() * 100;
 
   const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
-    console.log('AddProject')
     if (projectName) {
-     return firebase
+      const newProject = { projectId : projectId,name: projectName,userId: '1234567890'}
+      firebase
         .firestore()
-        .collection("projects") //return nemikhad?
-        .add({
-          projectId : projectId,
-          name: projectName,
-          userId: '1234567890',
-        })
+        .collection("projects")
+        .add(newProject)
         .then(() => {
-           setProjects([...projects]);                                    //? chera elzaman bayad inkar ro bokone?
+           setProjects([...projects, newProject]);                                    //? chera elzaman bayad inkar ro bokone?
           setProjectName("");
           setShow(false);
         })

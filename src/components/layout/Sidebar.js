@@ -7,7 +7,6 @@ import AddProject from "../AddProject";
 
 
 const Sidebar = () => {
-  console.log('Sidebar');
 
   const [active, setActive] = useState("inbox");               //chon selectedProject initial'esh 'INBOX' e, app load ke mishe to sidebae inbox active shode.
   const [showProjects, setShowProjects] = useState(true);
@@ -48,7 +47,7 @@ const Sidebar = () => {
         </li>
       </ul>
 
-      <div className="sidebar__middle" onClick={ () => setShowProjects(!showProjects)}>
+      <div className="sidebar__middle" onClick={ () => setShowProjects(!showProjects)}>  
         <span><FaChevronDown className={!showProjects ? 'hidden-projects' : undefined} /></span>
         <h2>Projects</h2>
       </div>
