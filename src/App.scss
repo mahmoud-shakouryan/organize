@@ -293,7 +293,7 @@ body {
             }
            
             .project-delete-modal{
-
+              
               &__inner{
               padding: 10px 5px;
                 border-radius: 3px;
@@ -309,7 +309,6 @@ body {
                 justify-content: flex-start;
                 flex-direction: column;
                 animation: cancelModalAnimation .5s ;
-                z-index: 1000;
 
                 P{
                   font-size: 11px;

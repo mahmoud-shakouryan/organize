@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 
 const App = () => {
+  console.log('rendering App.js')
    const [darkMode, setDarkMode] = useState(false) ;
   const { deleteModal } = useDeleteModalValue();
 

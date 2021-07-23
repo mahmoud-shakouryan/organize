@@ -1,15 +1,15 @@
 import { FaTrashAlt, FaCircle } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue, useDeleteModalValue } from "./context/index";
 import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const IndividualProject = ({project}) => {
-
+console.log('oomad tuye individual')
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
   const { deleteModal, setDeleteModal } = useDeleteModalValue();
-
+  
   const deleteProject = (docId) => {
             firebase.firestore().collection('projects').doc(docId).delete()
             .then(()=>{
@@ -18,6 +18,9 @@ const IndividualProject = ({project}) => {
             setProjects([...updatedProjects]);
             })
           }
+
+          
+        
    
   return (
     <div className='singleProject'>
@@ -30,9 +33,19 @@ const IndividualProject = ({project}) => {
         className={'sidebar__project-delete'}
       >
         <FaTrashAlt onClick={(e) => {
-          setShowDeleteConfirm(!showDeleteConfirm);
-          setDeleteModal(!deleteModal);
-          e.stopPropagation();
+         
+          //setShowDeleteConfirm(!showDeleteConfirm);
+          setDeleteModal(!deleteModal);                              //???????????????in ghesmat chera har 2ta ba ham trigger nemishe.har 2 ta bashe faghat deleteModal(context) age yeki, hamoon yeki.
+          
+          // setDeleteModal(PrevState => {
+          //   return {deleteModal:!deleteModal}
+          // });
+            // setShowDeleteConfirm(prevState => {
+              //   return {showDeleteConfirm:!prevState}
+              // });
+              
+              e.stopPropagation();
+          
           
           }}/> 
         {showDeleteConfirm && (
