@@ -19,7 +19,7 @@ const Projects =() => {
         }
         onClick={() => {
           setActive(project.projectId);
-          setSelectedProject(project.projectId);
+          // setSelectedProject(project.projectId);
         }}
       >
           <IndividualProject

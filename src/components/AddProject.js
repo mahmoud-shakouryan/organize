@@ -11,7 +11,7 @@ const AddProject = () => {
 
   const addProject = () => {                         // too kolle application add kardan be db hamin injast faghat
     if (projectName) {
-      const newProject = { projectId : projectId,name: projectName,userId: '1234567890'}
+      const newProject = { projectId : projectId, name: projectName, userId: '1234567890'}
       firebase
         .firestore()
         .collection("projects")

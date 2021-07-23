@@ -51,7 +51,6 @@ export const useTasks = selectedProject => {              //SHARE THE DATA, NOT 
 
 // custom hook #2
 export const useProjects = () => {
-
     const [projects, setProjects] = useState([]);
     useEffect(() => {
     const db = firebase.firestore().collection('projects').where('userId','==','1234567890').orderBy('projectId').get();

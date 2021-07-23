@@ -10,29 +10,13 @@ const IndividualProject = ({project}) => {
   const { setSelectedProject } = useSelectedProjectValue();
 
   const deleteProject = (docId) => {
-    console.log(projects)
-    firebase.firestore().collection("projects").doc(docId).delete()
-      .then(() => {
-        console.log('deleting succeeded')
-        setSelectedProject('INBOX')
-        firebase.firestore().collection('projects').where('userId','==','1234567890').orderBy('projectId').get()
-        .then(result => {
-        console.log('accessing db succeeded')
-          const projects = result.docs.map(project=>{
-            
-            console.log('...project.data()',{...project.data()})
-            return ({
-              ...project.data()
-            });
-          });
-          setProjects(projects);
-          setSelectedProject('INBOX');
-        })
-      })
-      .catch(err => console.log('deleteProject error',err));
-    };
-    
- 
+            firebase.firestore().collection('projects').doc(docId).delete()
+            .then(()=>{
+              const updatedProjects = projects.filter(project => project.docId !== docId);
+            setSelectedProject('INBOX');
+            setProjects([...updatedProjects]);
+            })
+          }
    
   return (
     <div className='singleProject'>
@@ -45,8 +29,8 @@ const IndividualProject = ({project}) => {
         className={'sidebar__project-delete'}
       >
         <FaTrashAlt onClick={(e) => {
-            e.stopPropagation();
-           setShowDeleteConfirm(!showDeleteConfirm);
+          setShowDeleteConfirm(!showDeleteConfirm);
+          // e.stopPropagation();
            
           }}/> 
         {showDeleteConfirm && (
