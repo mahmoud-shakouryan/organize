@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useSelectedProjectValue, useProjectsValue } from "./context/index";
+import { /*useSelectedProjectValue,*/ useProjectsValue } from "./context/index";
 import IndividualProject from "./IndividualProject";
 
 const Projects =() => {
   
   const [active, setActive] = useState(null); //active
-  const { setSelectedProject } = useSelectedProjectValue(); // faghat context
+ // const { setSelectedProject } = useSelectedProjectValue(); // faghat context
   const { projects } = useProjectsValue(); //be context be hook#2
   return (
     projects &&

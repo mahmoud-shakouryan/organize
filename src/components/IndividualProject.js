@@ -1,5 +1,5 @@
 import { FaTrashAlt, FaCircle } from "react-icons/fa";
-import { useProjectsValue, useSelectedProjectValue } from "./context/index";
+import { useProjectsValue, useSelectedProjectValue, useDeleteModalValue } from "./context/index";
 import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
 import { useState } from "react";
 
@@ -8,6 +8,7 @@ const IndividualProject = ({project}) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
+  const { deleteModal, setDeleteModal } = useDeleteModalValue();
 
   const deleteProject = (docId) => {
             firebase.firestore().collection('projects').doc(docId).delete()
@@ -30,8 +31,9 @@ const IndividualProject = ({project}) => {
       >
         <FaTrashAlt onClick={(e) => {
           setShowDeleteConfirm(!showDeleteConfirm);
-          // e.stopPropagation();
-           
+          setDeleteModal(!deleteModal);
+          e.stopPropagation();
+          
           }}/> 
         {showDeleteConfirm && (
           <div className={"project-delete-modal"}>
@@ -46,7 +48,7 @@ const IndividualProject = ({project}) => {
               >
                 Delete
               </button>
-              <span onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}>Cancel</span>
+              <button className='cancel' onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}>Cancel</button>
               </div>
             </div>
           </div>
