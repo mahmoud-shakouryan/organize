@@ -2,6 +2,7 @@ import { FaTrashAlt, FaCircle } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue, useDeleteModalValue } from "./context/index";
 import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
 import { useState, useEffect } from "react";
+import Spinner from './spinner/Spinner';
 
 const IndividualProject = ({project}) => {
 console.log('oomad tuye individual')
@@ -9,19 +10,22 @@ console.log('oomad tuye individual')
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
   const { deleteModal, setDeleteModal, showDeleteConfirm, setShowDeleteConfirm } = useDeleteModalValue();
+  const [isLoading, setIsLoading] = useState(false);
   
+  console.log('isLoading >> ',isLoading)
   const deleteProject = (docId) => {
             firebase.firestore().collection('projects').doc(docId).delete()
             .then(()=>{
               const updatedProjects = projects.filter(project => project.docId !== docId);
-            setSelectedProject('INBOX');
-            setProjects([...updatedProjects]);
+              setSelectedProject('INBOX');
+              setProjects([...updatedProjects]);
             })
           }
-
-          
         
-   
+        
+
+
+
   return (
     <div className='singleProject'>
       <div className='dotAndName'>
@@ -45,28 +49,28 @@ console.log('oomad tuye individual')
           }}/> 
           
         {showDeleteConfirm && (
-          <div className={"project-delete-modal"}>
-            <div className="project-delete-modal__inner ">
-              <p>Are you sure you want to delete this project?</p>
-              <div className='buttons'>
-              <button
-              className='delete'
-                type="button"
-                onClick={() => {
-                  deleteProject(project.docId);
-                }}
-              >
-                Delete
-              </button>
-              <button
-               className='cancel'
-                onClick={() => {
-                  setShowDeleteConfirm(!showDeleteConfirm);
-                  setDeleteModal(!deleteModal);
-                }}>Cancel</button>
+                <div className={"project-delete-modal"}>
+                <div className="project-delete-modal__inner ">
+                  <p>Are you sure you want to delete this project?</p>
+                  <div className='buttons'>
+                  <button
+                  className='delete'
+                    type="button"
+                    onClick={() => {
+                      deleteProject(project.docId);
+                    }}
+                  >
+                   {!isLoading ? 'Delete' : <Spinner/>}
+                  </button>
+                  <button
+                  className='cancel'
+                    onClick={() => {
+                      setShowDeleteConfirm(!showDeleteConfirm);
+                      setDeleteModal(!deleteModal);
+                    }}>Cancel</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
         )}
       </span>
     </div>
