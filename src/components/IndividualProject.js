@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 
 const IndividualProject = ({project}) => {
 console.log('oomad tuye individual')
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
+  // const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
-  const { deleteModal, setDeleteModal } = useDeleteModalValue();
+  const { deleteModal, setDeleteModal, showDeleteConfirm, setShowDeleteConfirm } = useDeleteModalValue();
   
   const deleteProject = (docId) => {
             firebase.firestore().collection('projects').doc(docId).delete()
@@ -33,27 +33,24 @@ console.log('oomad tuye individual')
         className={'sidebar__project-delete'}
       >
         <FaTrashAlt onClick={(e) => {
-         
-          //setShowDeleteConfirm(!showDeleteConfirm);
+          setShowDeleteConfirm(!showDeleteConfirm);
           setDeleteModal(!deleteModal);                              //???????????????in ghesmat chera har 2ta ba ham trigger nemishe.har 2 ta bashe faghat deleteModal(context) age yeki, hamoon yeki.
-          
           // setDeleteModal(PrevState => {
           //   return {deleteModal:!deleteModal}
           // });
             // setShowDeleteConfirm(prevState => {
               //   return {showDeleteConfirm:!prevState}
               // });
-              
               e.stopPropagation();
-          
-          
           }}/> 
+          
         {showDeleteConfirm && (
           <div className={"project-delete-modal"}>
-            <div className="project-delete-modal__inner">
+            <div className="project-delete-modal__inner ">
               <p>Are you sure you want to delete this project?</p>
               <div className='buttons'>
               <button
+              className='delete'
                 type="button"
                 onClick={() => {
                   deleteProject(project.docId);
@@ -61,7 +58,12 @@ console.log('oomad tuye individual')
               >
                 Delete
               </button>
-              <button className='cancel' onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}>Cancel</button>
+              <button
+               className='cancel'
+                onClick={() => {
+                  setShowDeleteConfirm(!showDeleteConfirm);
+                  setDeleteModal(!deleteModal);
+                }}>Cancel</button>
               </div>
             </div>
           </div>
