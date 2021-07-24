@@ -13,7 +13,7 @@ const App = () => {
     <SelectedProjectProvider>
     <ProjectsProvider>
 
-    <main className={darkMode && deleteModal ? 'darkMode deleteModal' : deleteModal ? 'deleteModal' : undefined}>
+    <main className={darkMode ? 'darkMode' :undefined}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Content/>
     </main>
