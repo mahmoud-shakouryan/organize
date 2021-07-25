@@ -1,7 +1,7 @@
 import { FaTrashAlt, FaCircle } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue, useLoadingContextValue } from "./context/index";
 import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const IndividualProject = ({project}) => {
   
@@ -11,19 +11,16 @@ const IndividualProject = ({project}) => {
   
   
   const { isLoading, setIsLoading } = useLoadingContextValue();
+  
+  
   const deleteProject = (docId) => {
-            setIsLoading(true);
-            console.log('bghable vaslshodan********IndividualProject ',isLoading)
-
+            setIsLoading(prevState => !prevState);
             firebase.firestore().collection('projects').doc(docId).delete()
             .then(()=>{
+              setIsLoading( prevState => !prevState ) ;
               const updatedProjects = projects.filter(project => project.docId !== docId);
               setSelectedProject('INBOX');
               setProjects([...updatedProjects]);
-              setIsLoading( !isLoading ) ;
-            console.log('bade vaslshodan********IndividualProject ',isLoading)
-
-              
             })
           }
         
@@ -61,7 +58,6 @@ const IndividualProject = ({project}) => {
                   className='delete'
                     type="button"
                     onClick={() => {
-                      setIsLoading(true);
                       deleteProject(project.docId);
                     }}
                   >

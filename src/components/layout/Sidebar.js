@@ -57,7 +57,7 @@ const Sidebar = () => {
 
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
-      {showProjects ? <AddProject /> : isLoading ? <Spinner/> : null}
+      {showProjects && !isLoading ? <AddProject /> : showProjects && isLoading ? <div className='spinnerWrapper'><Spinner /> </div>: <AddProject/>}
       
     </div>
   );

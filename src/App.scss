@@ -398,3 +398,70 @@ body {
     background-color: rgb(94, 42, 42);
   }
 }
+
+
+
+
+
+
+////////////////////////////// spinner //////////////////////////////////
+
+.spinnerWrapper{
+  display: flex;
+  justify-content: center;
+  width: 89%;
+  height: 30px;
+  position: relative;
+  .loader{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+  }
+  .loader,
+.loader:before,
+.loader:after {
+  
+  background: $dark;
+  display: inline-block;
+  animation: load1 .5s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+  border-radius: 13px;
+}
+.loader {
+  color: $dark;
+  text-indent: -9999em;
+  position: relative;
+  font-size: 4px;
+  transform: translateZ(0);
+  animation-delay: -0.16s;
+  
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+}
