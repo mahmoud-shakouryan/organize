@@ -4,13 +4,12 @@ import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim an
 import { useState} from "react";
 
 const IndividualProject = ({project}) => {
-  
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
   
   
-  const { isLoading, setIsLoading } = useLoadingContextValue();
+  const { setIsLoading } = useLoadingContextValue();
   
   
   const deleteProject = (docId) => {

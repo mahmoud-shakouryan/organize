@@ -362,17 +362,69 @@ body {
 
 
     .add-project{
-      padding: 5px 10px;
-      @include vc;
-      justify-content: flex-start;
+      background-color: #fff;
+      padding: 0px 0px;
+      border-radius: 3px;
+      border: 1px solid $gray_3;
       cursor: pointer;
-      .add-project__plus{
-        margin-right: 10px;
-        font-size: 24px;
-        font-weight: 500;
+      .add-project__input{
+        display: flex;
+        .inputWrapper{
+          flex: 2.5;
+          width: 100%;
+          @include vc();
+          justify-content: center;
+          input{
+
+            border: none;
+            padding:5px 5px;
+            outline: none;
+          font-size: 14px;
+  
+        }
+        }
+        .add-cancel-wrapper{
+          flex: 2.5;
+          @include vc();
+          justify-content: center;
+          
+          .add-project__submit{
+            border: none;
+            outline: none;
+            flex: 1;
+            height: 100%;
+            padding: 5px 2px;
+            font-size: 14px;
+            background-color:$dark;
+            color: $gray_1;
+            cursor: pointer;
+          }
+          .add-project__cancel{
+            flex: 1;
+            background-color: $gray_1;
+            padding: 5px 2px;
+            font-size: 14px;
+            @include vc();
+            justify-content: center;
+            color: $dark;
+          }
+        }
+      
       }
-      .add-project__text{
-        font-size: 14px;
+      .addWrapper{
+        display: flex;
+        justify-content: center;
+        .add-project__plus{
+          background-color: rgb(92, 7, 7);
+          // margin-right: 10px;
+          font-size: 24px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .add-project__text{
+          background-color: rgb(32, 170, 67);
+          font-size: 14px;
+        }
       }
     }
     

@@ -13,7 +13,7 @@ const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(false);
   const { setSelectedProject } = useSelectedProjectValue();
   const { isLoading } = useLoadingContextValue();
-  console.log('Sidebar.js >>> isLoading',isLoading)
+
   return (
     <div className="sidebar">
       <ul className="sidebar__generic">
@@ -56,8 +56,8 @@ const Sidebar = () => {
         </div>
 
       </div>
-      <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
-      {showProjects && !isLoading ? <AddProject /> : showProjects && isLoading ? <div className='spinnerWrapper'><Spinner /> </div>: <AddProject/>}
+      <ul className="sidebar__projects">{showProjects ? <Projects /> : null}</ul>
+      {showProjects && !isLoading ? <AddProject/> : showProjects && isLoading ? <div className='spinnerWrapper'><Spinner /> </div>: <AddProject/>}
       
     </div>
   );
