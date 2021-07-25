@@ -7,7 +7,10 @@ const Projects =() => {
   const [active, setActive] = useState(null); //active
  // const { setSelectedProject } = useSelectedProjectValue(); // faghat context
   const { projects } = useProjectsValue(); //be context be hook#2
+  
 
+ 
+  
   return (
     projects &&
     projects.map((project) => (
@@ -23,9 +26,10 @@ const Projects =() => {
           // setSelectedProject(project.projectId);
         }}
       >
-          <IndividualProject
-            project={project}
-          />
+       <IndividualProject
+          project={project}
+        />
+          
       </li>
     ))
   );

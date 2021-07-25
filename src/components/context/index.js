@@ -1,7 +1,25 @@
-import { ProjectsContext, ProjectsProvider, useProjectsValue } from './projects-context';
-import { SelectedProjectContext, SelectedProjectProvider, useSelectedProjectValue } from './selected-project-context';
-import {DeleteModalContext, DeleteModalProvider, useDeleteModalValue} from './deleteModal-context';
+import {
+  ProjectsContext,
+  ProjectsProvider,
+  useProjectsValue,
+} from "./projects-context";
+import {
+  SelectedProjectContext,
+  SelectedProjectProvider,
+  useSelectedProjectValue,
+} from "./selected-project-context";
+import {
+  LoadingContext,
+  LoadingContextProvider,
+  useLoadingContextValue,
+} from "./loading-context";
 
-export { ProjectsContext, ProjectsProvider, useProjectsValue } ;
-export { SelectedProjectContext, SelectedProjectProvider, useSelectedProjectValue };
-export {DeleteModalContext, DeleteModalProvider, useDeleteModalValue};
+
+
+export { ProjectsContext, ProjectsProvider, useProjectsValue };
+export {
+  SelectedProjectContext,
+  SelectedProjectProvider,
+  useSelectedProjectValue,
+};
+export { LoadingContext, LoadingContextProvider, useLoadingContextValue };

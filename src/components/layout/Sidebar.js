@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useSelectedProjectValue } from "../context/index";
 import Projects from "../Projects";
 import AddProject from "../AddProject";
-
+import { useLoadingContextValue } from '../context/loading-context';
+import Spinner from '../spinner/Spinner';
 
 
 const Sidebar = () => {
@@ -11,7 +12,8 @@ const Sidebar = () => {
   const [active, setActive] = useState("inbox");               //chon selectedProject initial'esh 'INBOX' e, app load ke mishe to sidebae inbox active shode.
   const [showProjects, setShowProjects] = useState(false);
   const { setSelectedProject } = useSelectedProjectValue();
-
+  const { isLoading } = useLoadingContextValue();
+  console.log('Sidebar.js >>> isLoading',isLoading)
   return (
     <div className="sidebar">
       <ul className="sidebar__generic">
@@ -55,7 +57,8 @@ const Sidebar = () => {
 
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
-      {showProjects && <AddProject />}
+      {showProjects ? <AddProject /> : isLoading ? <Spinner/> : null}
+      
     </div>
   );
 };

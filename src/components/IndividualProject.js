@@ -1,24 +1,29 @@
 import { FaTrashAlt, FaCircle } from "react-icons/fa";
-import { useProjectsValue, useSelectedProjectValue, useDeleteModalValue } from "./context/index";
+import { useProjectsValue, useSelectedProjectValue, useLoadingContextValue } from "./context/index";
 import { firebase } from "../firebase"; //chon yeki az karaee ke inja mikhaim anjam bedim delete kardane.
 import { useState, useEffect } from "react";
-import Spinner from './spinner/Spinner';
 
 const IndividualProject = ({project}) => {
-console.log('oomad tuye individual')
-  // const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
+  
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
-  const { deleteModal, setDeleteModal, showDeleteConfirm, setShowDeleteConfirm } = useDeleteModalValue();
-  const [isLoading, setIsLoading] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);             
   
-  console.log('isLoading >> ',isLoading)
+  
+  const { isLoading, setIsLoading } = useLoadingContextValue();
   const deleteProject = (docId) => {
+            setIsLoading(true);
+            console.log('bghable vaslshodan********IndividualProject ',isLoading)
+
             firebase.firestore().collection('projects').doc(docId).delete()
             .then(()=>{
               const updatedProjects = projects.filter(project => project.docId !== docId);
               setSelectedProject('INBOX');
               setProjects([...updatedProjects]);
+              setIsLoading( !isLoading ) ;
+            console.log('bade vaslshodan********IndividualProject ',isLoading)
+
+              
             })
           }
         
@@ -38,7 +43,6 @@ console.log('oomad tuye individual')
       >
         <FaTrashAlt onClick={(e) => {
           setShowDeleteConfirm(!showDeleteConfirm);
-          setDeleteModal(!deleteModal);                              //???????????????in ghesmat chera har 2ta ba ham trigger nemishe.har 2 ta bashe faghat deleteModal(context) age yeki, hamoon yeki.
           // setDeleteModal(PrevState => {
           //   return {deleteModal:!deleteModal}
           // });
@@ -57,16 +61,16 @@ console.log('oomad tuye individual')
                   className='delete'
                     type="button"
                     onClick={() => {
+                      setIsLoading(true);
                       deleteProject(project.docId);
                     }}
                   >
-                   {!isLoading ? 'Delete' : <Spinner/>}
+                  Delete
                   </button>
                   <button
                   className='cancel'
                     onClick={() => {
                       setShowDeleteConfirm(!showDeleteConfirm);
-                      setDeleteModal(!deleteModal);
                     }}>Cancel</button>
                   </div>
                 </div>
