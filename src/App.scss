@@ -472,6 +472,7 @@ body {
     height: calc(100vh - 35px);
     flex: 7.5;
     background-color: rgb(94, 42, 42);
+    position: relative;
     h2{
       padding: 10px 40px;
       
@@ -501,6 +502,21 @@ body {
         }
       }
     }
+
+    .add-task{
+    &__overlay{
+    background: black;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    z-index: 2000;
+    transition: opacity 0.2s ease-in;
+    // height: calc(100vh);
+    }
+  }
   }
 }
 

@@ -7,26 +7,24 @@ import ProjectOverlay from './ProjectOverlay';
 import TaskDate from  './TaskDate';
 
 
-const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddTask, setShowQuickAddTask }) => { 
+const AddTask = () => { 
     //showAddTaskMain>> too site oonja ke roo add task click mikonim ye kadri miad ke mishe nevesht ba detail'e kamel.showAddTaskMain true bashe yani oon oomade.
     //showQuickAddTask >> too site oon bala ye gozine dare baraye neveshtane sari. ke age showQuickAddTask true bashe yani oon click shode.
-
-        
     
-    
-    
-    const [task, setTask] = useState('');                                           // task
+        const [showQuickAddTask, setShowQuickAddTask ] = useState(true);
+        const [showAddTaskMain] = useState(true);
+        const [task, setTask] = useState('');                                           // task
         const [taskDate, setTaskDate] = useState('');                            //taskDate
         const [project, setProject] = useState('');                               //project
-        const [showMain, setShowMain] = useState(shouldShowMain);                //showMain   (boolean)  >>> kadre add taske asli ooomade biroon (click kardim rooye add taske asli)
-        const [showProjectOverlay, setShowProjectOverlay] = useState(false);   //showProjectOveraly (boolean)
-        const [showTaskDate, setShowTaskDate] = useState(false);               //showTaskDate      (boolean)
-
-        const { selectedProject } = useSelectedProjectValue();                // selectedProject    (context)
+        const [showMain, setShowMain] = useState(false);                         //showMain   (boolean)  >>> kadre add taske asli ooomade biroon (click kardim rooye add taske asli)
+        const [showProjectOverlay, setShowProjectOverlay] = useState(false);      //showProjectOveraly (boolean)
+        const [showTaskDate, setShowTaskDate] = useState(false);                 //showTaskDate      (boolean)
+ 
+        const { selectedProject } = useSelectedProjectValue();                    // selectedProject    (context)
         
 
         const addTask = () => {
-            const projectId = project || selectedProject;
+            const projectId = project || selectedProject;        //project az component child miad
             let collatedDate = '';
             if(projectId === 'TODAY'){  //serfan hesab kardane tarikh too in ghesmat      // too site oon bala smate chap 3ta gozine hast inbox today next_7
                 collatedDate = moment().format('DD/MM/YYYY');
@@ -36,17 +34,15 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
             }
 
             if(task && projectId){
-                return ( 
-                firebase
-                .firestore()
-                .collection('tasks')
+
+                firebase.firestore().collection('tasks')
                 .add({
                     archived:false,
                     projectId:projectId,
                     task:task,
                     date:collatedDate || taskDate,
                     userId:'1234567890'
-                }))
+                })
                 .then(()=>{            // then reset everything
                     setTask('');
                     setProject('');
@@ -55,7 +51,6 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain = false, showQuickAddT
                 })
                 .catch(err => console.log(err));
             }
-
         }
 
 

@@ -4,6 +4,7 @@ import { useProjectsValue } from "./context/projects-context";
 import { useLoadingContextValue } from "./context/index";
 import { useState } from "react";
 
+
 const AddProject = ({ activeAdd, setActiveAdd }) => {
   const [show, setShow] = useState(false); //show
   const [projectName, setProjectName] = useState(""); //projectName
