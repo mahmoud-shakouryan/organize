@@ -14,11 +14,9 @@ import AddTask from "./AddTask";
 
 
 const Tasks = () => {
-  
   const { selectedProject } = useSelectedProjectValue();            //context 1.
   const { projects } = useProjectsValue();                        //context 2 (oon too be hooke 2 useProjects vasl mishe)
   const { tasks } = useTasks(selectedProject);      //custom hook #1 // selectedProject ro az context 1 gereftim
-
 
   let projectName = "";
   if (projects && selectedProject && projects.length > 0 && !collatedTasksExist(selectedProject)) {

@@ -408,7 +408,8 @@ body {
             outline: none;
             flex: 1;
             height: 100%;
-            font-size: 24px;
+            font-size: 14px;
+            font-weight: 500;
             background-color:$dark;
             color: $gray_1;
             cursor: pointer;
@@ -420,31 +421,34 @@ body {
           .add-project__cancel{
             flex: 1;
             background-color: $gray_1;
-            font-size: 24px;
+            font-size: 14px;
+            font-weight: 500;
             @include vc();
             justify-content: center;
             color: $dark;
             border-radius: 0 3px 3px 0;
+            height: 100%;
           }
         }
       
       }
       .addWrapper{
         @include vc(flex-start);
-        
-       
+        padding: 0 5px;
         .add-project__plus{
-          
-          font-size: 24px;
+          font-size: 14px;
           font-weight: 500;
           cursor: pointer;
           margin-right: 5px;
+          color:$dark;
+
 
         }
         .add-project__text{
           font-size: 14px;
           @include vc();
-          
+          color: $dark;
+          font-weight: 500;
         }
       }
     }

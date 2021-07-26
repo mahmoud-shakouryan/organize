@@ -8,48 +8,44 @@ import moment from 'moment';
 export const useTasks = selectedProject => {              //SHARE THE DATA, NOT THE LOGIC.
     const [tasks, setTasks] = useState([]);
     const [archivedTasks, setArchivedTasks] = useState([]);
+    
     useEffect(() => {
-      let unsubscribe = firebase.firestore().collection('tasks').where('userId', '==', '1234567890');
+      let mustDo = firebase.firestore().collection('tasks').where('userId', '==', '1234567890');
+      
+      if( selectedProject && !collatedTasksExist(selectedProject)){    //az sabet'haye samte chap nist
+        mustDo = mustDo.where('projectId', '==', selectedProject)
+      }
+      else if(selectedProject === 'INBOX'){
+        mustDo = mustDo.where('date', '==', '');
+      }
+      else if (selectedProject === 'TODAY'){
+        mustDo = mustDo.where('date', '==', moment().format('DD/MM/YYYY'))
+      }
   
-      unsubscribe =
-        selectedProject && !collatedTasksExist(selectedProject)
-          ? (unsubscribe = unsubscribe.where('projectId', '==', selectedProject))
-          : selectedProject === 'TODAY'
-          ? (unsubscribe = unsubscribe.where(
-              'date',
-              '==',
-              moment().format('DD/MM/YYYY')
-            ))
-          : selectedProject === 'INBOX' || selectedProject === 0
-          ? (unsubscribe = unsubscribe.where('date', '==', ''))
-          : unsubscribe;
-  
-      unsubscribe = unsubscribe.onSnapshot(snapshot => {
-        const newTasks = snapshot.docs.map(task => ({
+      mustDo = mustDo.onSnapshot(snapshot => {               // return mikone araye'ee (newTasks) az task'ha ba id'e oon document
+        const newTasks = snapshot.docs.map(task => ({        //onSnapShot bejaye get montaha ba emale taghirat dar firebase cloud firestore
           id: task.id,
           ...task.data(),
         }));
-  
-        setTasks(
-          selectedProject === 'NEXT_7'
-            ? newTasks.filter(
-                task =>
-                  moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
-                  task.archived !== true
-              )
-            : newTasks.filter(task => task.archived !== true)
-        );
-        setArchivedTasks(newTasks.filter(task => task.archived !== false));
+        
+        
+        setTasks(selectedProject === 'NEXT_7' ?  newTasks.filter(task => ( moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 ) && task.archived !== true ) :
+        newTasks.filter( task => task.archived === false ));
+        setArchivedTasks( newTasks.filter( task => task.archived === true ));
       });
   
-      return () => unsubscribe();
+      return () => mustDo();
     }, [selectedProject]);
   
     return { tasks, archivedTasks };
    
     };
 
-// custom hook #2
+
+
+
+
+    // custom hook #2
 export const useProjects = () => {
     const [projects, setProjects] = useState([]);
     useEffect(() => {
