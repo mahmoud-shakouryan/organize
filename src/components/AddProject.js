@@ -57,10 +57,10 @@ const AddProject = ({ activeAdd, setActiveAdd }) => {
           type="button"
           onClick={addProject} // khodesh intori nevesht tooye onclick ro : () => addProject()
         >
-          Add 
+          + 
         </button>
         <span className="add-project__cancel" onClick={() => setShow(false)}>
-          Cancel
+          &times;
         </span>
         </div>
       </div>
