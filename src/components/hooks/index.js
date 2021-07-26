@@ -6,6 +6,8 @@ import moment from 'moment';
 
 // custom hook #1 
 export const useTasks = selectedProject => {              //SHARE THE DATA, NOT THE LOGIC.
+
+    console.log(moment().format('DD/MM/YYYY'))
     const [tasks, setTasks] = useState([]);
     const [archivedTasks, setArchivedTasks] = useState([]);
     
@@ -16,12 +18,12 @@ export const useTasks = selectedProject => {              //SHARE THE DATA, NOT 
         mustDo = mustDo.where('projectId', '==', selectedProject)
       }
       else if(selectedProject === 'INBOX'){
-        mustDo = mustDo.where('date', '==', '');
+        mustDo = mustDo.where('date', '==', '');       //pas inbox oonie ke tarikhi nadare .
       }
       else if (selectedProject === 'TODAY'){
         mustDo = mustDo.where('date', '==', moment().format('DD/MM/YYYY'))
       }
-  
+
       mustDo = mustDo.onSnapshot(snapshot => {               // return mikone araye'ee (newTasks) az task'ha ba id'e oon document
         const newTasks = snapshot.docs.map(task => ({        //onSnapShot bejaye get montaha ba emale taghirat dar firebase cloud firestore
           id: task.id,
@@ -29,8 +31,9 @@ export const useTasks = selectedProject => {              //SHARE THE DATA, NOT 
         }));
         
         
-        setTasks(selectedProject === 'NEXT_7' ?  newTasks.filter(task => ( moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 ) && task.archived !== true ) :
-        newTasks.filter( task => task.archived === false ));
+        
+        const next_7_tasks = newTasks.filter(task => ( moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7) && task.archived === false );
+        setTasks(selectedProject === 'NEXT_7' ?  next_7_tasks : newTasks.filter( task => task.archived === false )) ;
         setArchivedTasks( newTasks.filter( task => task.archived === true ));
       });
   

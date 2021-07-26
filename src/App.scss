@@ -472,6 +472,35 @@ body {
     height: calc(100vh - 35px);
     flex: 7.5;
     background-color: rgb(94, 42, 42);
+    h2{
+      padding: 10px 40px;
+      
+    }
+    &__list{       //ul
+      background-color: #fff;
+      padding: 3px 40px;
+      list-style: none;
+
+      li{
+        @include vc(flex-start);
+        .checkbox-holder{
+          background-color: $white;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: 1px solid $dark;
+          margin-right: 5px;
+          cursor: pointer;
+
+          &:hover{
+            background-color: $dark;
+          }
+        }
+        span{
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
 

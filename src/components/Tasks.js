@@ -19,10 +19,11 @@ const Tasks = () => {
   const { tasks } = useTasks(selectedProject);      //custom hook #1 // selectedProject ro az context 1 gereftim
 
   let projectName = "";
+  
   if (projects && selectedProject && projects.length > 0 && !collatedTasksExist(selectedProject)) {
     projectName = getTitle(projects, selectedProject).name;
   }
-  if (collatedTasksExist(selectedProject) && selectedProject) {
+  if (collatedTasksExist(selectedProject) && selectedProject) {          //in function ro mitoonest biare hminja valli outsource karde va hamintor baraye balaee
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
   }
 
@@ -35,7 +36,7 @@ const Tasks = () => {
       <h2>{projectName}</h2>
       <ul className="tasks__list">
         {tasks.map((task) => (
-          <li key={`${task.id}`}>             {/*task.id ro stringesh kard fek konam*/}
+          <li key={task.id}>             {/*task.id ro stringesh kard fek konam*/}
             <Checkbox id={task.id} />
             <span>{task.task}</span>
           </li>
