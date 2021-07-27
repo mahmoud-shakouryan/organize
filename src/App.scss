@@ -42,7 +42,7 @@ $gray_3: #6d7085;
 
 ///////////////////////////////          mixins                ////////////////////////////////////////
 @mixin box-overlay {
-  box-shadow: $generic-box-shadow;
+  box-shadow: $gray_2;
   position: absolute;
   width: 100%;
   z-index: 1;
@@ -50,26 +50,12 @@ $gray_3: #6d7085;
   border-radius: 3px;
 }
 
-@mixin va($va-align: center) {
-  display: flex;
-  align-items: center;
 
-  @if $va-align != center {
-    justify-content: flex-start;
-  }
-  else {
-    justify-content: center;
-  }
-}
-
-@mixin no-select {
-  user-select: none;
-}
 
 @mixin btn($width) {
   width: $width;
-  background-color: $generic-bg;
-  color: #fff !important;
+  background-color: $dark;
+  color:$gray_1;
   border: 1px solid transparent;
   margin-right: 5px;
   margin-top: 10px;
@@ -82,7 +68,7 @@ $gray_3: #6d7085;
   white-space: nowrap;
   border-radius: 3px !important;
   text-decoration: none !important;
-  text-align: c;
+  text-align: center;
   cursor: pointer;
 }
 
@@ -452,6 +438,8 @@ body {
         }
       }
     }
+
+    
   }
   
 
@@ -503,18 +491,113 @@ body {
       }
     }
 
-    .add-task{
-    &__overlay{
-    background: black;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-    z-index: 2000;
-    transition: opacity 0.2s ease-in;
-    // height: calc(100vh);
+    .add-task , .add-task__overlay{
+
+      .add-task__shallow{
+        padding: 0px 40px;
+         display: flex;
+         align-items: center;
+         
+        &__plus{
+          @include vc(center);
+          padding-right: .5vw;
+          font-weight: 500;
+          cursor: pointer;
+        }
+
+        &__text{
+          color: 14px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    
+    
+      &__main{
+      background-color:$gray_3;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      overflow: visible;
+      padding: 30px 5px;
+      border-radius: 3px;
+      width: 30vw;
+      height: 180px;
+      .header {
+        font-size: 13px;
+        margin-bottom: 20px;
+        float: left;
+      }
+
+      .add-task__content{
+        width: 100%;
+        border: 1px solid #ddd;
+        background-color: white ;
+        border-radius: 3px;
+        height: 35px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .taskDateDiv{
+        @include box-overlay();
+        background-color: #fff;
+        width: 200px;
+        right: 0;
+        
+        .task-date__list{
+          list-style: none;
+        }
+      }
+
+      .add-task__submit{
+        @include btn(90px);
+        
+      }
+      .add-task__cancel{
+        @include btn(90px);
+        // @include cancel();
+        color: $dark;
+        background-color: $gray_1;
+        
+      }
+
+      .iconsWrapper{
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+
+        .add-task__project{
+         @include vc(center);
+         padding: 5px 5px;
+          cursor: pointer;
+         .icon{
+          font-size: 20px;
+          font-weight: 100;
+
+          &:hover{
+            transform: scale(1.1);
+          }
+         }
+        }
+  
+        .add-task__date{
+          // background-color: rgb(177, 83, 83);
+          @include vc(center);
+         padding: 5px 5px;
+         cursor: pointer;
+         .icon{
+          font-size: 20px;
+          font-weight: 100;
+
+          &:hover{
+            transform: scale(1.1);
+          }
+         }
+        }
+      }
     }
   }
   }
