@@ -7,10 +7,9 @@ import ProjectOverlay from './ProjectOverlay';
 import TaskDate from  './TaskDate';
 
 
-const AddTask = ({ showAddTaskMain = true, shouldShowMain}) => { 
-    //showAddTaskMain>> too site oonja ke roo add task click mikonim ye kadri miad ke mishe nevesht ba detail'e kamel.showAddTaskMain true bashe yani oon oomade.
+const AddTask = ( ) => { 
     
-        const [showMain, setShowMain] = useState(shouldShowMain);                         //
+        const [showMain, setShowMain] = useState(false);                         //
         const [task, setTask] = useState('');                                           // task
         const [taskDate, setTaskDate] = useState('');                            //baraye <TaskDate/>
         const [showTaskDate, setShowTaskDate] = useState(false);                 //baraye <TaskDate/>
@@ -57,12 +56,11 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain}) => {
     return (
                     <div className='add-task'>
                        
-                        { showAddTaskMain && (               //faghat baraye oon + Add Task ke bala nabashe ,content bashe
                             <div className='add-task__shallow' onClick={ () => setShowMain(!showMain)}>     
                                 <span className='add-task__shallow__plus'>+</span>
                                 <span className='add-task__shallow__text'>Add Task</span>
                             </div>
-                        )}
+                       
                         
                         {showMain && (
                             <div className='add-task__main'>

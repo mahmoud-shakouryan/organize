@@ -5,7 +5,6 @@ import AddTask from '../AddTask';
 const Header = ({ darkMode, setDarkMode }) => {
 
         const [shouldShowMain, setShouldShowMain] = useState(false);
-        const [showQuickAddTask, setShowQuickAddTask] = useState(false);
     
     
         return (
@@ -19,7 +18,6 @@ const Header = ({ darkMode, setDarkMode }) => {
                         <li 
                         className='settings__add'
                         onClick={ () => {
-                            setShowQuickAddTask(true);
                             setShouldShowMain(true);
                           }}
                           title='Add Quick Task'
