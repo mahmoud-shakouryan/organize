@@ -7,9 +7,8 @@ import ProjectOverlay from './ProjectOverlay';
 import TaskDate from  './TaskDate';
 
 
-const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, setShowQuickAddTask }) => { 
+const AddTask = ({ showAddTaskMain = true, shouldShowMain}) => { 
     //showAddTaskMain>> too site oonja ke roo add task click mikonim ye kadri miad ke mishe nevesht ba detail'e kamel.showAddTaskMain true bashe yani oon oomade.
-    //showQuickAddTask >> too site oon bala ye gozine dare baraye neveshtane sari. ke age showQuickAddTask true bashe yani oon click shode.
     
         const [showMain, setShowMain] = useState(shouldShowMain);                         //
         const [task, setTask] = useState('');                                           // task
@@ -56,7 +55,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
 
 
     return (
-                    <div className={ showQuickAddTask ? 'add-task add-task__overlay' : 'add-task'}>
+                    <div className='add-task'>
                        
                         { showAddTaskMain && (               //faghat baraye oon + Add Task ke bala nabashe ,content bashe
                             <div className='add-task__shallow' onClick={ () => setShowMain(!showMain)}>     
@@ -65,25 +64,8 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
                             </div>
                         )}
                         
-                        {(showMain || showQuickAddTask) && (
+                        {showMain && (
                             <div className='add-task__main'>
-                            {showQuickAddTask && (
-                                <>
-                                    <div>
-                                        <h2 className='header'>Quick Add</h2>
-                                        <span 
-                                        className='add-task__cancel-x'
-                                        onClick={()=>{
-                                            setShowMain(false);
-                                            setShowProjectOverlay(false);
-                                            setShowQuickAddTask(false);
-                                        }}
-                                        >
-                                            X
-                                        </span>
-                                    </div>
-                                </>
-                            )}
                                 <ProjectOverlay setProject={setProject} showProjectOverlay={showProjectOverlay} setShowProjectOverlay={setShowProjectOverlay} />
                                 <TaskDate setTaskDate={setTaskDate} showTaskDate={showTaskDate} setShowTaskDate={setShowTaskDate}/>
                                 <input
@@ -96,11 +78,10 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
                                 <button 
                                 type='button'
                                 className='add-task__submit'
-                                onClick={()=>{showQuickAddTask ? addTask() && setShowQuickAddTask(false) : addTask()}}
+                                onClick={() => addTask() }
                                 >
                                     Add Task
                                 </button>
-                                {!showQuickAddTask && (
                                     <span 
                                     className='add-task__cancel'
                                     onClick={()=>{
@@ -110,7 +91,6 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
                                     >
                                         Cancel
                                     </span>
-                                )}
                                 <div className='iconsWrapper'>
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
                                 className='add-task__project'

@@ -491,7 +491,7 @@ body {
       }
     }
 
-    .add-task , .add-task__overlay{
+    .add-task {
         
       .add-task__shallow{
         
@@ -539,6 +539,7 @@ body {
         height: 35px;
         padding-left: 10px;
         padding-right: 10px;
+        outline: none;
       }
 
       .taskDateDiv{
@@ -641,6 +642,16 @@ body {
         }
       }
     }
+  }
+
+  .add-task__overlay{
+        background-color: rgb(100, 12, 12);
+        position: absolute;
+        // top: 300px;
+        // left: 300px;
+        width: 3px;
+        height: 3px;
+        z-index: 1000;
   }
   }
 }
