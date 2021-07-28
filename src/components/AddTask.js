@@ -1,4 +1,4 @@
-import { FaRegListAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { FaList, FaRegHourglass } from "react-icons/fa";
 import moment from "moment";
 import { firebase } from "../firebase";
 import { useSelectedProjectValue } from "./context/index";
@@ -11,12 +11,12 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
     //showAddTaskMain>> too site oonja ke roo add task click mikonim ye kadri miad ke mishe nevesht ba detail'e kamel.showAddTaskMain true bashe yani oon oomade.
     //showQuickAddTask >> too site oon bala ye gozine dare baraye neveshtane sari. ke age showQuickAddTask true bashe yani oon click shode.
     
-        const [showMain, setShowMain] = useState(shouldShowMain);                         //showMain   (boolean)  >>> kadre add taske asli ooomade biroon (click kardim rooye add taske asli)
+        const [showMain, setShowMain] = useState(shouldShowMain);                         //
         const [task, setTask] = useState('');                                           // task
-        const [taskDate, setTaskDate] = useState('');                            //taskDate
-        const [project, setProject] = useState('');                               //project
-        const [showProjectOverlay, setShowProjectOverlay] = useState(false);      //showProjectOveraly (boolean)
-        const [showTaskDate, setShowTaskDate] = useState(false);                 //showTaskDate      (boolean)
+        const [taskDate, setTaskDate] = useState('');                            //baraye <TaskDate/>
+        const [showTaskDate, setShowTaskDate] = useState(false);                 //baraye <TaskDate/>
+        const [project, setProject] = useState('');                               //baraye <ProjectOverlsay/>
+        const [showProjectOverlay, setShowProjectOverlay] = useState(false);      //baraye <ProjectOverlsay/>
  
         const { selectedProject } = useSelectedProjectValue();                    // selectedProject    (context)
         
@@ -91,6 +91,7 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
                                 type='text'
                                 value={task}
                                 onChange={ e => setTask(e.target.value)}
+                                placeholder='write your task here ...'
                                 />
                                 <button 
                                 type='button'
@@ -115,13 +116,13 @@ const AddTask = ({ showAddTaskMain = true, shouldShowMain, showQuickAddTask, set
                                 className='add-task__project'
                                 onClick={ () => setShowProjectOverlay(!showProjectOverlay)}
                                    >
-                                    <FaRegListAlt className='icon'/>
+                                    <FaList className='icon'/>
                                 </span>
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
                                 className='add-task__date'
                                 onClick={ () => setShowTaskDate(!showTaskDate)}
                                    >
-                                    <FaRegCalendarAlt className='icon'/>
+                                    <FaRegHourglass className='icon'/>
                                 </span>  
                                 </div>
                             </div>

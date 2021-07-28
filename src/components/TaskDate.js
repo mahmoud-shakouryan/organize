@@ -14,10 +14,10 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => {
                                 setTaskDate(moment().format('DD/MM/YYYY'));
                             }}
                             >
-                                <span>
-                                    <FaSpaceShuttle/>
+                                <span className='iconWrapper'>
+                                    <FaSpaceShuttle className='icon'/>
                                 </span>
-                                <span>Today</span>
+                                <span className='baseProjectName'>Today</span>
                             </li>
                             <li 
                             onClick={()=>{
@@ -25,10 +25,10 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => {
                                 setTaskDate(moment().add(1,'day').format('DD/MM/YYYY'));
                             }}
                             >
-                                <span>
-                                    <FaSun/>
+                                <span className='iconWrapper'>
+                                    <FaSun className='icon'/>
                                 </span>
-                                <span>Tomorrow</span>
+                                <span className='baseProjectName'>Tomorrow</span>
                             </li>
                             <li 
                             onClick={()=>{
@@ -36,10 +36,10 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => {
                                 setTaskDate(moment().add(7,'days').format('DD/MM/YYYY'));
                             }}
                             >
-                                <span>
-                                    <FaRegPaperPlane/>
+                                <span className='iconWrapper'>
+                                    <FaRegPaperPlane className='icon'/>
                                 </span>
-                                <span>Next Week</span>
+                                <span className='baseProjectName'>Next Week</span>
                             </li>
                         </ul>
                     </div>
