@@ -13,6 +13,7 @@ import AddTask from "./AddTask";
 
 
 
+
 const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();            //context 1.
   const { projects } = useProjectsValue();                        //context 2 (oon too be hooke 2 useProjects vasl mishe)
@@ -32,7 +33,7 @@ const Tasks = () => {
   }, [projectName])
   
   return (
-    <div className="tasks">
+    <div className='tasks'>
       <h2>{projectName}</h2>
       <ul className="tasks__list">
         {tasks.map((task) => (
