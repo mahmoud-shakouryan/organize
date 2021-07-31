@@ -1,7 +1,7 @@
 import { FaSun, FaMoon, FaTasks } from 'react-icons/fa';
 import { useState } from "react";
-import AddTask from '../AddTask'; 
 import { useSidebarShowValue } from '../context/index';  
+import AddQuick from '../addQuick/AddQuick';
 
 const Header = ({ darkMode, setDarkMode }) => {
 
@@ -29,6 +29,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                     </ul>
                 </div>
             </nav>
+            <AddQuick/>
         </header>
     );
 }
