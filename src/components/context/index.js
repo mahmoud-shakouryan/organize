@@ -13,8 +13,11 @@ import {
   LoadingContextProvider,
   useLoadingContextValue,
 } from "./loading-context";
-
-
+import {
+  SidebarShowContext,
+  SidebarProvider,
+  useSidebarShowValue,
+} from "./sidebarShow-context";
 
 export { ProjectsContext, ProjectsProvider, useProjectsValue };
 export {
@@ -23,3 +26,4 @@ export {
   useSelectedProjectValue,
 };
 export { LoadingContext, LoadingContextProvider, useLoadingContextValue };
+export { SidebarShowContext, SidebarProvider, useSidebarShowValue };

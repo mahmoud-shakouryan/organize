@@ -1,16 +1,17 @@
 import { FaSun, FaMoon, FaTasks } from 'react-icons/fa';
 import { useState } from "react";
-import AddTask from '../AddTask';   
+import AddTask from '../AddTask'; 
+import { useSidebarShowValue } from '../context/index';  
 
 const Header = ({ darkMode, setDarkMode }) => {
 
         const [shouldShowMain, setShouldShowMain] = useState(false);
-    
-    
+        const { sidebarShow, setSidebarShow } = useSidebarShowValue();
+        console.log(sidebarShow)
         return (
         <header className='header'>
             <nav>
-                <div className='logo'>
+                <div className='logo' onClick={ prevState => !prevState } >
                     <FaTasks/>
                 </div>
                 <div className='settings'>
