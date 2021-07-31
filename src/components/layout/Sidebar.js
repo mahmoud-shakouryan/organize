@@ -5,6 +5,8 @@ import Projects from "../Projects";
 import AddProject from "../AddProject";
 import { useLoadingContextValue } from '../context/loading-context';
 import Spinner from '../spinner/Spinner';
+import { useSidebarShowValue } from '../context/index';  
+
 
 
 const Sidebar = () => {
@@ -13,9 +15,11 @@ const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(false);
   const { setSelectedProject } = useSelectedProjectValue();
   const { isLoading } = useLoadingContextValue();
+  const { sidebarShow, setSidebarShow } = useSidebarShowValue();
+
 
   return (
-    <div className="sidebar">
+    <div className={sidebarShow ? 'sidebar opened' : 'sidebar'}>
       <ul className="sidebar__generic">
         <li
           className={active === "inbox" ? "active" : undefined}

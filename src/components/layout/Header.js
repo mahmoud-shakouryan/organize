@@ -11,8 +11,8 @@ const Header = ({ darkMode, setDarkMode }) => {
         return (
         <header className='header'>
             <nav>
-                <div className='logo' onClick={ prevState => !prevState } >
-                    <FaTasks/>
+                <div className='logo' onClick={ () => setSidebarShow(!sidebarShow) } >
+                    <FaTasks/> 
                 </div>
                 <div className='settings'>
                     <ul>

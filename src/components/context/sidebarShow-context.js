@@ -4,7 +4,7 @@ export const SidebarShowContext = createContext();             //1
 
 
 
-export const SidebarProvider = ({ children }) => {         
+export const SidebarShowProvider = ({ children }) => {         
     const [sidebarShow, setSidebarShow] = useState(false);   
     return (
       <SidebarShowContext.Provider

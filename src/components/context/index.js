@@ -15,7 +15,7 @@ import {
 } from "./loading-context";
 import {
   SidebarShowContext,
-  SidebarProvider,
+  SidebarShowProvider,
   useSidebarShowValue,
 } from "./sidebarShow-context";
 
@@ -26,4 +26,4 @@ export {
   useSelectedProjectValue,
 };
 export { LoadingContext, LoadingContextProvider, useLoadingContextValue };
-export { SidebarShowContext, SidebarProvider, useSidebarShowValue };
+export { SidebarShowContext, SidebarShowProvider, useSidebarShowValue };

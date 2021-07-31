@@ -1,6 +1,6 @@
 import Header from './components/layout/Header';
 import Content from './components/layout/Content';
-import { ProjectsProvider, SelectedProjectProvider, LoadingContextProvider} from './components/context';
+import { ProjectsProvider, SelectedProjectProvider, LoadingContextProvider, SidebarShowProvider} from './components/context';
 import { useState } from 'react';
 
 
@@ -11,12 +11,14 @@ const App = () => {
     <SelectedProjectProvider>
     <ProjectsProvider>
     <LoadingContextProvider>
+     <SidebarShowProvider>
       
     <main className={darkMode ? 'darkMode' :undefined}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Content/>
     </main>
 
+    </SidebarShowProvider> 
     </LoadingContextProvider>
     </ProjectsProvider>
     </SelectedProjectProvider>

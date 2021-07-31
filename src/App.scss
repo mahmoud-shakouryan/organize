@@ -174,19 +174,17 @@ body {
   display: flex;
   align-items: stretch;
 
+  
 
-
-
-
-
-
-
+  
+  
   .sidebar{
+    transform: translateX(-200px);
     height: calc(100vh - 35px);
     flex: 2;
     background-color: $stateBlue;
 
-    &>*{
+    & > *{
       margin-left: 20px;
     }
     .sidebar__generic{
@@ -337,6 +335,7 @@ body {
               }
               
             }
+            
           }
 
          
@@ -442,6 +441,7 @@ body {
   
 
 
+  
 
 
 
