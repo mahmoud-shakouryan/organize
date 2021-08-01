@@ -1,12 +1,14 @@
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
+import moment from 'moment';
 
 
 const TaskDate = ({ setQuickTaskDate, showQuickTaskDate, setShowQuickTaskDate}) => {
 
     return (
                 showQuickTaskDate && (
-                    <div className='taskDateDiv' >
-                        <ul className='task-date__list'>
+                    <div className='quickTaskDate' >
+                        
+                        <ul className='quickTaskDate__list'>
                             <li 
                             onClick={()=>{
                                 setShowQuickTaskDate(false);
