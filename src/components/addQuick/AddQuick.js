@@ -1,32 +1,72 @@
 import { FaList, FaRegHourglass } from "react-icons/fa";
-import TaskDate from  '../TaskDate';
-import ProjectOverlay from '../ProjectOverlay';
+//quickproject overlay
+import QuickTaskDate from '../quickTaskDate/QuickTaskDate';
 import moment from "moment";
 import { firebase } from "../../firebase";
 import { useSelectedProjectValue } from "../context/index";
 import { useState } from "react";
 
 
-const AddQuick = ({ setShowAddQuick }) => {
+const AddQuick = ({ showAddQuick,  setShowAddQuick }) => {
 
-    const [showMain, setShowMain] = useState(false);                         
+    const [task, setTask] = useState('');     
+    const [taskDate, setTaskDate] = useState('');                            //baraye <TaskDate/>
+    const [showQuickTaskDate, setShowQuickTaskDate] = useState(false);                 //baraye <QuickTaskDate/>
+    const [project, setProject] = useState('');                               //baraye <ProjectOverlsay/>
+    const [showProjectOverlay, setShowProjectOverlay] = useState(false);      //baraye <ProjectOverlsay/> 
+    
+    
+
+    const addTask = () => {
+        const projectId = project || selectedProject;        //project az component child miad
+        let collatedDate = '';
+        if(projectId === 'TODAY'){  //serfan hesab kardane tarikh too in ghesmat      // too site oon bala smate chap 3ta gozine hast inbox today next_7
+            collatedDate = moment().format('DD/MM/YYYY');
+        }
+        else if(projectId === 'NEXT_7'){
+            collatedDate = moment().add(7,'days').format('DD/MM/YYYY');
+        }
+
+        if(task && projectId){
+
+            firebase.firestore().collection('tasks')
+            .add({
+                archived:false,
+                projectId:projectId,
+                task:task,
+                date:collatedDate || taskDate,
+                userId:'1234567890'
+            })
+            .then(()=>{            // then reset everything
+                setTask('');
+                setProject('');
+                setShowMain('');
+                setShowProjectOverlay(false);
+            })
+            .catch(err => console.log(err));
+        }
+    }
 
 
     return (
-                    <div className='add-quick-wrapper'>
+                    showAddQuick && (
+                        <div className='add-quick-wrapper'>
                         <div className='add-quick'>
                         <div className='add-quick__exit' onClick={ () => setShowMain(!showMain)}>&times;</div>
-                        <input type='text' className='add-quick__input' placeholder="e.g. do not forget Mary's birthday"/>
+                        <input type='text' value={task} onChange={e=>setTask(e.target.value)} className='add-quick__input' placeholder="e.g. do not forget Mary's birthday"/>
                         <div className='add-quick__clickables'>
                             <span className='icon-1-span'><FaList/></span>
                             <span className='icon-2-span'><FaRegHourglass/></span>
                         </div>
+                        <QuickTaskDate setQuickTaskDate={setQuickTaskDate} showQuickTaskDate={showQuickTaskDate} setShowQuickTaskDate={setShowQuickTaskDate}/>
                         <div className='buttons'>
-                            <button className='submit'>Submit</button>
-                            <button className='cancel' onClick={ () => setShowMain(!showMain)}>Cancel</button>
+                            <button className='submit'>Add Task</button>
+                            <button className='cancel' onClick={ () => setShowAddQuick(!showAddQuick)}>Cancel</button>
                         </div>
                     </div>
                     </div>
+                    )
+                    
     );
 }
 

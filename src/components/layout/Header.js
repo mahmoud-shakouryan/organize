@@ -30,7 +30,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                     </ul>
                 </div>
             </nav>
-            <AddQuick setShowAddQuick={setShowAddQuick}/>
+            <AddQuick showAddQuick={showAddQuick} setShowAddQuick={setShowAddQuick}/>
         </header>
     );
 }
