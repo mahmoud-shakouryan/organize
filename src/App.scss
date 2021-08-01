@@ -57,17 +57,13 @@ $platinum: #E5E4E2;
   margin: 10px 5px 0 0;
   font-weight: bold;
   font-size: 13px !important;
-  // line-height: 17px;
   padding: 6px 12px 6px 12px;
   position: absolute;
-  // display: inline-block;
   display: flex;
   align-items: center;
   justify-content: center;
-  // white-space: nowrap;
   border-radius: 3px ;
   text-decoration: none ;
-  // text-align: center;
   cursor: pointer;
 }
 
@@ -167,6 +163,79 @@ body {
       }
     }
   }
+  .add-quick-wrapper{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(5, 5, 5, 0.7);
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+  .add-quick{
+    
+    z-index: 100;
+    width: 35%;
+    height: auto;
+    background-color: rgb(10, 197, 41);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0 5px;
+    border-radius: 3px;
+    .add-quick__exit{
+      float: right;
+      font-size: 30px;
+      font-weight: 300;
+      cursor: pointer;
+    }
+    .add-quick__input{
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: 5px 5px;
+      border-radius: 3px;
+      line-height: 2;
+    }
+    .add-quick__clickables{
+      margin-top: 5px;
+      // padding: 2px 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 14px;
+      .icon-1-span , .icon-2-span{
+        @include vc(center);
+        cursor: pointer;
+        &:hover{
+          transform: scale(1.1);
+          transition: transform .1s ease;
+        }
+      }
+      .icon-1-span {
+        margin-right: 5px;
+      }
+    }
+    .buttons{
+       margin: 30px 0 0 0;
+      .submit , .cancel{
+        width: 90px;
+        font-size: 14px;
+        font-weight: 400;
+        border: none;
+        border-radius: 3px;
+        background-color: blue;
+        padding: 8px 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+      }
+      .cancel{
+        background-color: #fff;
+      }
+    }
+  }
+}
 }
 ///////////////////////////////////// sidebar //////////////////////////////////////////////////////
 

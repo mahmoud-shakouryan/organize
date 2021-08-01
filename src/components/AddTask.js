@@ -9,14 +9,14 @@ import TaskDate from  './TaskDate';
 
 const AddTask = ( ) => { 
     
-        const [showMain, setShowMain] = useState(false);                         //
+        const [showMain, setShowMain] = useState(false);                         
         const [task, setTask] = useState('');                                           // task
         const [taskDate, setTaskDate] = useState('');                            //baraye <TaskDate/>
         const [showTaskDate, setShowTaskDate] = useState(false);                 //baraye <TaskDate/>
         const [project, setProject] = useState('');                               //baraye <ProjectOverlsay/>
         const [showProjectOverlay, setShowProjectOverlay] = useState(false);      //baraye <ProjectOverlsay/>
  
-        const { selectedProject } = useSelectedProjectValue();                    // selectedProject    (context)
+        const { selectedProject } = useSelectedProjectValue();                    
         
 
         const addTask = () => {

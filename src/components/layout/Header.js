@@ -5,7 +5,8 @@ import AddQuick from '../addQuick/AddQuick';
 
 const Header = ({ darkMode, setDarkMode }) => {
 
-        const [shouldShowMain, setShouldShowMain] = useState(false);
+
+        const [showAddQuick, setShowAddQuick] = useState(false);
         const { sidebarShow, setSidebarShow } = useSidebarShowValue();
         console.log(sidebarShow)
         return (
@@ -19,7 +20,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                         <li 
                         className='settings__add'
                         onClick={ () => {
-                            setShouldShowMain(true);
+                            setShowAddQuick(!showAddQuick);
                           }}
                           title='Add Quick Task'
                         >
@@ -29,7 +30,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                     </ul>
                 </div>
             </nav>
-            <AddQuick/>
+            <AddQuick setShowAddQuick={setShowAddQuick}/>
         </header>
     );
 }
