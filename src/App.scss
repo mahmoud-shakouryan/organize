@@ -9,12 +9,12 @@ $gray2:#6C6C74;
 $gray3:#545C74;
 
 /////////////////////////////////////////////////////////////////////
-$dark2: #2D354D;
+$dark2: rgb(45, 53, 77);
 $white2:#C4CCE3;
 $orange2: #F39354;
 
 $gray1-2:#9C9CAB;
-$gray2-2:#868B9A;
+$gray2-2:rgb(134, 139, 154);
 $brown2:#8B6F69;
 
 
@@ -569,27 +569,41 @@ body {
     flex: 8;
     background-color: $white2;
     position: relative;
+    // border: 1px solid $gray2-2;
+
     h2{
       padding: 10px 40px;
-      
+      color: $dark2;
+      margin: 0 30px 20px 0;
     }
     &__list{       //ul
-      // background-color: #fff;
       padding: 3px 40px;
       list-style: none;
-
+      width: 90%;
       li{
+        // background-color: rgb(51, 9, 9);
         @include vc(flex-start);
-        .checkbox-holder{
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          border: 1px solid $dark;
-          margin-right: 5px;
-          cursor: pointer;
+        line-height: 18px;
+        font-size: 14px;
+        color: $dark2;
+        font-weight: 500;
+        padding: 10px 0;
+         border-bottom: 1px solid $gray2-2;
+         
+        // box-shadow: rgba(134, 139, 154, 0.19) 0px 10px 20px,inset rgba(134, 139, 154, 0.23) 0px 6px 6px;
 
-          &:hover{
-            background-color: $dark;
+        .checkbox-holder{
+          @include vc(center);
+          margin-right: 20px;
+          .checkbox{
+            cursor: pointer;
+            border-color: gray;
+            color: #343434;
+            height: 16px;
+            width: 16px;
+            display: block;
+            border: 1px solid gray;
+            border-radius: 16px;
           }
         }
         span{
@@ -612,6 +626,7 @@ body {
           padding: 10px 0px 10px 10px;
           color: $dark2;
           font-size: 14px;
+          border-radius: 3px 0 0 3px;
           
         }
 
@@ -622,6 +637,7 @@ body {
           background-color:$orange2;
           padding: 10px 10px 10px 3px;
           color: $dark2;
+          border-radius: 0 3px 3px 0;
         }
       }
     
@@ -647,9 +663,11 @@ body {
         padding-right: 10px;
         outline: none;
         border: none;
-        background-color: $gray1-2;
+        background-color: $white2;
+        border: 1px solid $gray1-2;
         color: $dark2;
         font-size: 14px;
+        box-shadow: rgba(134, 139, 154, 0.19) 0px 10px 20px, rgba(134, 139, 154, 0.23) 0px 6px 6px;
 
         &::placeholder{
           color: $dark2;
@@ -667,8 +685,8 @@ body {
           right: 10%;
          overflow: auto;
         border-radius: 3px;
-        border: 1px solid $brown2;
-        box-shadow:1px 1px 11px 2px rgba(45,53,77,0.7);
+         border: 1px solid $gray2-2;
+        box-shadow: rgba(134, 139, 154, 0.19) 0px 10px 20px, rgba(134, 139, 154, 0.23) 0px 6px 6px;
         .project-overlay__list{
 
           li{
@@ -691,8 +709,10 @@ body {
         width: 200px;
         top: 35%;
         right: 10%;
-        border: 1px solid $brown2;
-        box-shadow:1px 1px 15px 1px rgba(45,53,77,0.7);
+          border: 1px solid $gray2-2;
+        // rgb(45, 53, 77)
+        //(134, 139, 154)
+        box-shadow: rgba(134, 139, 154, 0.19) 0px 10px 20px, rgba(134, 139, 154, 0.23) 0px 6px 6px;
         border-radius: 13px;
         .task-date__list{     //ul
           list-style: none;
@@ -755,14 +775,15 @@ body {
         font-weight: 100;
         background-color: $dark2;
          color: $white2;
-        
+        box-shadow: rgba(134, 139, 154, 0.19) 0px 10px 20px, rgba(134, 139, 154, 0.23) 0px 6px 6px;
       }
       .add-task__cancel{
         @include btn(90px);
         font-size: 14px;
         font-weight: 500;
-         background-color: $white2;
-         border: 1px solid $gray2-2;
+         background-color: $gray1-2;
+        //  border: 1px solid $gray2-2;
+        box-shadow: rgba(134, 139, 154, 0.19) 0px 10px 20px, rgba(134, 139, 154, 0.23) 0px 6px 6px;
         color: $dark;
         margin-left: 100px;
       }
