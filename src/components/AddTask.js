@@ -1,4 +1,4 @@
-import { FaList, FaRegHourglass } from "react-icons/fa";
+import { FaListUl, FaRegHourglass } from "react-icons/fa";
 import moment from "moment";
 import { firebase } from "../firebase";
 import { useSelectedProjectValue } from "./context/index";
@@ -94,7 +94,7 @@ const AddTask = ( ) => {
                                 className='add-task__project'
                                 onClick={ () => setShowProjectOverlay(!showProjectOverlay)}
                                    >
-                                    <FaList className='icon' />
+                                    <FaListUl className='icon' />
                                 </span>
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
                                 className='add-task__date'

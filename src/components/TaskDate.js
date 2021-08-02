@@ -1,4 +1,4 @@
-import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
+import { FaRegCalendarCheck, FaSun, FaRegPaperPlane } from 'react-icons/fa';
 import moment from 'moment';
 
 
@@ -15,7 +15,7 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => {
                             }}
                             >
                                 <span className='iconWrapper'>
-                                    <FaSpaceShuttle className='icon'/>
+                                    <FaRegCalendarCheck className='icon'/>
                                 </span>
                                 <span className='baseProjectName'>Today</span>
                             </li>
