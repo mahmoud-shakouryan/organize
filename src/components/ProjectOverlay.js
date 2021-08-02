@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useProjectsValue } from "./context";
 
 
@@ -6,6 +7,9 @@ import { useProjectsValue } from "./context";
 const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectOverlay }) => {
 
     const { projects } = useProjectsValue();
+
+   
+
     return (
         projects && showProjectOverlay && (
             <div className='project-overlay'>
@@ -18,7 +22,7 @@ const ProjectOverlay = ({ setProject, showProjectOverlay, setShowProjectOverlay 
                         setShowProjectOverlay(false);
                     }}
                     >
-                        {project.projectName}
+                        {project.name}
                         </li>
                 ))}
                 </ul>

@@ -8,7 +8,6 @@ const Header = ({ darkMode, setDarkMode }) => {
 
         const [showAddQuick, setShowAddQuick] = useState(false);
         const { sidebarShow, setSidebarShow } = useSidebarShowValue();
-        console.log(sidebarShow)
         return (
         <header className='header'>
             <nav>

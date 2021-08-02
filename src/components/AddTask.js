@@ -80,7 +80,7 @@ const AddTask = ( ) => {
                                 >
                                     Add Task
                                 </button>
-                                    <span 
+                                    <button 
                                     className='add-task__cancel'
                                     onClick={()=>{
                                         setShowMain(false);
@@ -88,13 +88,13 @@ const AddTask = ( ) => {
                                     }}
                                     >
                                         Cancel
-                                    </span>
+                                    </button>
                                 <div className='iconsWrapper'>
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
                                 className='add-task__project'
                                 onClick={ () => setShowProjectOverlay(!showProjectOverlay)}
                                    >
-                                    <FaList className='icon'/>
+                                    <FaList className='icon' />
                                 </span>
                                 <span                             // clickables ( oon iconhaye rize oon paeene kadr samte rast)
                                 className='add-task__date'

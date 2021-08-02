@@ -7,7 +7,6 @@ import moment from 'moment';
 // custom hook #1 
 export const useTasks = selectedProject => {              //SHARE THE DATA, NOT THE LOGIC.
 
-    console.log(moment().format('DD/MM/YYYY'))
     const [tasks, setTasks] = useState([]);
     const [archivedTasks, setArchivedTasks] = useState([]);
     
