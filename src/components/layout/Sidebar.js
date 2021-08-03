@@ -28,7 +28,7 @@ const Sidebar = () => {
             setSelectedProject("INBOX");
           }}
         >
-          <span className='iconSpan'><FaInbox/></span>
+          <span className='iconSpan'><FaInbox className='theIcon'/></span>
           <span className='iconNameSpan'>inbox</span>
         </li>
         <li
@@ -38,7 +38,7 @@ const Sidebar = () => {
             setSelectedProject("TODAY");
           }}
         >
-          <span className='iconSpan'><FaRegCalendar/></span>
+          <span className='iconSpan'><FaRegCalendar className='theIcon'/></span>
           <span className='iconNameSpan'>today</span>
         </li>
         <li
@@ -48,7 +48,7 @@ const Sidebar = () => {
             setSelectedProject("NEXT_7");
           }}
         >
-          <span className='iconSpan'><FaRegCalendarAlt/></span>
+          <span className='iconSpan'><FaRegCalendarAlt className='theIcon'/></span>
           <span className='iconNameSpan'>next 7 days</span>
         </li>
       </ul>

@@ -56,16 +56,18 @@ const AddQuick = ({ showAddQuick,  setShowAddQuick }) => {
                             setShowAddQuick(!showAddQuick);
                             setShowQuickTaskDate(false);
                             }}>&times;</div>
-                        <input type='text' value={task} onChange={e=>setTask(e.target.value)} className='add-quick__input' placeholder="e.g. do not forget Mary's birthday"/>
-                        <div className='add-quick__clickables'>
-                            <span className='icon-1-span' onClick={ () => setShowQuickProjectOverlay(!showQuickProjectOverlay)}><FaList/></span>
-                            <span className='icon-2-span' onClick={ () => setShowQuickTaskDate(!showQuickTaskDate)}><FaRegHourglass/></span>
-                        </div>
-                        <QuickTaskDate setQuickTaskDate={setQuickTaskDate} showQuickTaskDate={showQuickTaskDate} setShowQuickTaskDate={setShowQuickTaskDate}/>
-                        <QuickProjectOverlay setQuickProject={setQuickProject} showQuickProjectOverlay={showQuickProjectOverlay} setShowQuickProjectOverlay={setShowQuickProjectOverlay}/>
-                        <div className='buttons'>
-                            <button className='submit'>Add Task</button>
-                            <button className='cancel' onClick={ () => setShowAddQuick(!showAddQuick)}>Cancel</button>
+                        <div className='content-wrapper'>
+                            <input type='text' value={task} onChange={e=>setTask(e.target.value)} className='add-quick__input' placeholder="e.g. do not forget Mary's birthday"/>
+                            <div className='add-quick__clickables'>
+                                <span className='icon-1-span' onClick={ () => setShowQuickProjectOverlay(!showQuickProjectOverlay)}><FaList/></span>
+                                <span className='icon-2-span' onClick={ () => setShowQuickTaskDate(!showQuickTaskDate)}><FaRegHourglass/></span>
+                            </div>
+                            <QuickTaskDate setQuickTaskDate={setQuickTaskDate} showQuickTaskDate={showQuickTaskDate} setShowQuickTaskDate={setShowQuickTaskDate}/>
+                            <QuickProjectOverlay setQuickProject={setQuickProject} showQuickProjectOverlay={showQuickProjectOverlay} setShowQuickProjectOverlay={setShowQuickProjectOverlay}/>
+                            <div className='buttons'>
+                                <button className='submit'>Add Task</button>
+                                <button className='cancel' onClick={ () => setShowAddQuick(!showAddQuick)}>Cancel</button>
+                            </div>
                         </div>
                     </div>
                     </div>
