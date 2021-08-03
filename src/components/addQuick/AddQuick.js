@@ -1,4 +1,4 @@
-import { FaList, FaRegHourglass } from "react-icons/fa";
+import { FaListUl, FaRegHourglass } from "react-icons/fa";
 import QuickProjectOverlay from '../quickProjectOverlay/QuickProjectOverlay';
 import QuickTaskDate from '../quickTaskDate/QuickTaskDate';
 import moment from "moment";
@@ -59,7 +59,7 @@ const AddQuick = ({ showAddQuick,  setShowAddQuick }) => {
                         <div className='content-wrapper'>
                             <input type='text' value={task} onChange={e=>setTask(e.target.value)} className='add-quick__input' placeholder="e.g. do not forget Mary's birthday"/>
                             <div className='add-quick__clickables'>
-                                <span className='icon-1-span' onClick={ () => setShowQuickProjectOverlay(!showQuickProjectOverlay)}><FaList/></span>
+                                <span className='icon-1-span' onClick={ () => setShowQuickProjectOverlay(!showQuickProjectOverlay)}><FaListUl/></span>
                                 <span className='icon-2-span' onClick={ () => setShowQuickTaskDate(!showQuickTaskDate)}><FaRegHourglass/></span>
                             </div>
                             <QuickTaskDate setQuickTaskDate={setQuickTaskDate} showQuickTaskDate={showQuickTaskDate} setShowQuickTaskDate={setShowQuickTaskDate}/>
